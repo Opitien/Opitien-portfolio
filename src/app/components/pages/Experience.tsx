@@ -4,32 +4,25 @@ import { getSEOConfig } from "../../../utils/seo";
 
 const experiences = [
   {
-    company: "TechCorp Studios",
+    company: "Bravax Technology Limited",
     role: "Senior Frontend Developer",
-    duration: "2023 — Present",
-    description: "Leading frontend architecture. optimizing render cycles. implementing design systems.",
-    tech: ["React", "TypeScript", "WebGL"]
+    duration: "Jan 2026 — Present",
+    description: "I build and optimize full-stack web applications, delivering responsive, user-centered interfaces. I collaborate with designers and product teams, implement SEO and accessibility best practices, and manage version control, deployment, and testing to ensure reliable, scalable applications.",
+    tech: ["Node.js", "MongoDB", "Express", "React.js", "Next.js", "TypeScript", "Figma","Framer"]
   },
   {
-    company: "Digital Waves",
-    role: "Frontend Developer",
-    duration: "2021 — 2023",
-    description: "Developed interactive UIs. Improved performance by 40%. Collaborated with UX team.",
-    tech: ["Vue", "Sass", "Jest"]
-  },
-  {
-    company: "StartupLab",
-    role: "Junior Developer",
-    duration: "2019 — 2021",
-    description: "Full-stack experimentation. Database management. API integration.",
-    tech: ["Node.js", "MongoDB", "Express"]
+    company: "South Circle",
+    role: "Frontend Developer (Internship)",
+    duration: "July 2025 — Dec 2025",
+    description: "During my internship as a Developer at South Circle, I built and optimized web applications using React.js, Next.js, TypeScript, and Node.js, improving performance and SEO. I collaborated with UX/UI designers in Figma to deliver user-centered experiences and managed version control, deployment, and testing to ensure reliable, scalable applications.",
+    tech: ["Node.js", "MongoDB", "Express", "React.js", "Next.js", "TypeScript", "Figma"]
   },
   {
     company: "Freelance",
     role: "Web Developer",
-    duration: "2018 — 2019",
-    description: "Created custom websites for small businesses and startups. Focused on clean design and user experience.",
-    tech: ["HTML/CSS", "JavaScript", "WordPress"]
+    duration: "Jan 2023 — June 2025",
+    description: "As a freelance designer, I built responsive websites in Wix CMS, translating brand concepts into engaging digital experiences. I created custom graphics, applied SEO and modern design principles, and improved user experience through intuitive layouts and clear navigation.",
+    tech: ["HTML/CSS", "JavaScript", "Wix CMS"]
   }
 ];
 
