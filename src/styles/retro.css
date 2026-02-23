@@ -1,0 +1,292 @@
+/* Retro Portfolio Custom Styles */
+
+:root {
+  /* Retro Color Palette */
+  --retro-bg: #F5F3ED;
+  --retro-teal: #5D9B99;
+  --retro-orange: #D17654;
+  --retro-pink: #C5979D;
+  --retro-charcoal: #2C2C2C;
+  --retro-light: #FAFAF8;
+  
+  /* Typography */
+  --font-mono: 'Space Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--retro-bg);
+  font-family: var(--font-sans);
+  color: var(--retro-charcoal);
+}
+
+/* Grain texture overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* Scanline effect */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.02) 50%,
+    rgba(0, 0, 0, 0.02)
+  );
+  background-size: 100% 4px;
+}
+
+/* Custom Cursor */
+body {
+  cursor: crosshair;
+}
+
+a, button, .clickable {
+  cursor: pointer;
+}
+
+/* Retro Typography */
+.retro-heading {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+/* Monitor Frame Style */
+.monitor-frame {
+  position: relative;
+  background: #1a1a1a;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 
+    0 0 0 4px #2c2c2c,
+    0 20px 50px rgba(0,0,0,0.5);
+}
+
+.monitor-frame::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg, 
+    rgba(255,255,255,0.1) 0%, 
+    rgba(255,255,255,0) 50%, 
+    rgba(0,0,0,0.1) 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Synth Toggle Button */
+.synth-toggle {
+  appearance: none;
+  background: #e0e0e0;
+  border: 1px solid #999;
+  border-bottom-width: 4px;
+  border-radius: 4px;
+  color: #333;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.synth-toggle:active, .synth-toggle.active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  box-shadow: none;
+  background: var(--retro-teal);
+  color: white;
+  border-color: #4a7d7b;
+}
+
+/* Analog Slider Track */
+.analog-slider-track {
+  height: 6px;
+  background: #2c2c2c;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.analog-slider-thumb {
+  width: 12px;
+  height: 20px;
+  background: #d17654;
+  border: 1px solid #a05a40;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  cursor: grab;
+}
+
+.analog-slider-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--retro-teal), var(--retro-teal));
+  border-radius: 3px;
+}
+
+/* Pixel divider */
+.pixel-divider {
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--retro-teal) 0px,
+    var(--retro-teal) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  opacity: 0.5;
+}
+
+/* Retro card shadow */
+.retro-shadow {
+  box-shadow: 
+    4px 4px 0px rgba(93, 155, 153, 0.2),
+    8px 8px 0px rgba(209, 118, 84, 0.1);
+}
+
+/* Vinyl animation */
+@keyframes spin-vinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vinyl-spin {
+  animation: spin-vinyl 3s linear infinite;
+}
+
+/* Hover glow effect */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 
+    0 0 20px rgba(93, 155, 153, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Retro button styles */
+.retro-button {
+  position: relative;
+  padding: 12px 32px;
+  background: var(--retro-charcoal);
+  color: var(--retro-light);
+  border: 2px solid var(--retro-charcoal);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 3px 3px 0px rgba(93, 155, 153, 0.2);
+}
+
+.retro-button:hover {
+  background: transparent;
+  color: var(--retro-charcoal);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px rgba(93, 155, 153, 0.3);
+}
+
+.retro-button.outline {
+  background: transparent;
+  color: var(--retro-charcoal);
+}
+
+.retro-button.outline:hover {
+  background: var(--retro-charcoal);
+  color: var(--retro-light);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px rgba(209, 118, 84, 0.3);
+}
+
+/* Retro tag/pill */
+.retro-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background: var(--retro-teal);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border-radius: 20px;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.retro-tag:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Geometric shapes */
+.retro-circle {
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--retro-teal), var(--retro-pink));
+}
+
+.retro-square {
+  background: linear-gradient(135deg, var(--retro-orange), var(--retro-pink));
+}
+
+/* Dotted timeline connector */
+.dotted-line {
+  border-left: 2px dotted var(--retro-teal);
+  opacity: 0.5;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: var(--retro-teal);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--retro-teal);
+  color: white;
+}
