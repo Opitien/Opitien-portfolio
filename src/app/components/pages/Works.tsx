@@ -3,46 +3,11 @@ import { ImageWithFallback } from "../../components/figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { useSEO } from "../../../utils/useSEO";
 import { getSEOConfig } from "../../../utils/seo";
-
-// Images
-const IMAGES = {
-    retro: "https://images.unsplash.com/photo-1669216202494-1fe1d0205ea5?q=80&w=1080",
-    portfolio: "https://images.unsplash.com/photo-1695634621375-0b66a9d5d1bc?q=80&w=1080",
-    cyberpunk: "https://images.unsplash.com/photo-1627827963179-a8bb14121eb4?q=80&w=1080"
-};
-
-const projects = [
-  {
-    id: 1,
-    title: "RetroWave Music",
-    subtitle: "Streaming Platform",
-    description: "A nostalgic music streaming app with 80s aesthetics and modern functionality.",
-    tags: ["React", "TypeScript", "Tailwind"],
-    image: IMAGES.retro,
-    featured: true
-  },
-  {
-    id: 2,
-    title: "Minimal Portfolio",
-    subtitle: "Personal Site",
-    description: "Pixel art inspired portfolio with smooth page transitions.",
-    tags: ["Next.js", "Framer Motion"],
-    image: IMAGES.portfolio,
-    featured: false
-  },
-  {
-    id: 3,
-    title: "Neon Analytics",
-    subtitle: "Data Dashboard",
-    description: "Cyberpunk-inspired data visualization dashboard.",
-    tags: ["React", "D3.js"],
-    image: IMAGES.cyberpunk,
-    featured: false
-  }
-];
+import { Link } from "react-router";
+import projects from "../../../data/projects";
 
 export function Works() {
-  useSEO(getSEOConfig("works"));
+    useSEO(getSEOConfig("works"));
   return (
     <div className="min-h-screen py-20 px-6 lg:px-12 bg-[#F5F3ED]">
       <div className="max-w-7xl mx-auto space-y-20">
@@ -75,8 +40,9 @@ export function Works() {
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                     className={`${project.featured ? "lg:col-span-2" : "lg:col-span-1"} group cursor-pointer`}
                 >
-                    {/* Monitor Frame */}
-                    <div className="relative bg-[#2C2C2C] p-3 rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2">
+                                        {/* Monitor Frame */}
+                                        <Link to={`/works/${project.slug}`} className="block">
+                                            <div className="relative bg-[#2C2C2C] p-3 rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2">
                         <div className="absolute top-0 left-0 right-0 h-1 bg-[#444] rounded-t-xl mx-4 mt-1"></div>
                         
                         {/* Screen */}
@@ -95,15 +61,16 @@ export function Works() {
                             <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
                         </div>
 
-                        {/* Monitor controls */}
-                        <div className="flex justify-between items-center px-4 py-2">
+                                                {/* Monitor controls */}
+                                                <div className="flex justify-between items-center px-4 py-2">
                              <div className="flex gap-1">
                                 <div className="w-1 h-1 bg-[#555] rounded-full"></div>
                                 <div className="w-1 h-1 bg-[#555] rounded-full"></div>
                              </div>
                              <div className="w-8 h-1 bg-[#333] rounded-full"></div>
-                        </div>
-                    </div>
+                                                </div>
+                                            </div>
+                                        </Link>
 
                     {/* Text Info */}
                     <div className="mt-8 flex justify-between items-start border-t border-[#2C2C2C]/10 pt-6">
@@ -122,15 +89,15 @@ export function Works() {
                             </p>
                         </div>
                         
-                        <div className="hidden md:flex flex-col items-end gap-2">
+                            <div className="hidden md:flex flex-col items-end gap-2">
                             {project.tags.map(tag => (
                                 <span key={tag} className="font-mono text-xs border border-[#2C2C2C]/20 px-2 py-1 rounded text-[#2C2C2C]/60">
                                     {tag}
                                 </span>
                             ))}
-                            <button title="View Project Details" className="mt-4 w-10 h-10 border border-[#2C2C2C] rounded-full flex items-center justify-center hover:bg-[#2C2C2C] hover:text-white transition-colors">
+                            <Link to={`/works/${project.slug}`} title="View Project Details" className="mt-4 w-10 h-10 border border-[#2C2C2C] rounded-full flex items-center justify-center hover:bg-[#2C2C2C] hover:text-white transition-colors">
                                 <ArrowUpRight className="w-5 h-5" />
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </motion.div>

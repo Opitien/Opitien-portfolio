@@ -34,10 +34,13 @@ export const defaultSEO: SEOConfig = {
   ogTitle: "Opitien Ejiroghene - Creative Developer & Designer",
   ogDescription:
     "Portfolio of Opitien Ejiroghene, a creative developer and designer specializing in modern web experiences.",
+  ogImage: "https://opitien.dev/og-image.svg",
+  ogUrl: "https://opitien.dev/",
   twitterCard: "summary_large_image",
   twitterTitle: "Opitien Ejiroghene - Creative Developer & Designer",
   twitterDescription:
     "Portfolio of Opitien Ejiroghene, a creative developer and designer specializing in modern web experiences.",
+  twitterImage: "https://opitien.dev/og-image.svg",
 };
 
 export const pageSEO: Record<string, SEOConfig> = {
