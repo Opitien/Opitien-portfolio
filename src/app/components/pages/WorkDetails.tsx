@@ -14,9 +14,9 @@ export function WorkDetails() {
     title: project ? `${project.title} — Opitien Ejiroghene` : "Project — Opitien Ejiroghene",
     description: project ? project.description : "Project details",
     ogImage: project ? project.image : undefined,
-    ogUrl: project ? `https://opitien.dev/projects/${project.slug}` : undefined,
+    ogUrl: project ? `https://opitien.work/projects/${project.slug}` : undefined,
     twitterImage: project ? project.image : undefined,
-    canonicalUrl: project ? `https://opitien.dev/projects/${project.slug}` : undefined,
+    canonicalUrl: project ? `https://opitien.work/projects/${project.slug}` : undefined,
   });
 
   if (!project) {
