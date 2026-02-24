@@ -123,6 +123,46 @@ export const pageSEO: Record<string, SEOConfig> = {
     twitterDescription:
       "Get to know me better. Discover my background, interests, and what drives my passion for creative development.",
   },
+  blog: {
+    title: "Blog - Opitien Ejiroghene",
+    description:
+      "Articles, field notes, and thoughts on frontend development, design, and retro-futuristic interfaces.",
+    keywords: [
+      "blog",
+      "articles",
+      "frontend",
+      "design",
+      "interfaces",
+      "development",
+    ],
+    ogTitle: "Blog - Opitien Ejiroghene",
+    ogDescription:
+      "Articles, field notes, and thoughts on frontend development, design, and retro-futuristic interfaces.",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Blog - Opitien Ejiroghene",
+    twitterDescription:
+      "Articles, field notes, and thoughts on frontend development, design, and retro-futuristic interfaces.",
+  },
+  contact: {
+    title: "Contact - Opitien Ejiroghene",
+    description:
+      "Get in touch to discuss projects, collaborations, or opportunities in design and frontend engineering.",
+    keywords: [
+      "contact",
+      "hire",
+      "freelance",
+      "email",
+      "frontend developer",
+      "designer",
+    ],
+    ogTitle: "Contact - Opitien Ejiroghene",
+    ogDescription:
+      "Get in touch to discuss projects, collaborations, or opportunities in design and frontend engineering.",
+    twitterCard: "summary",
+    twitterTitle: "Contact - Opitien Ejiroghene",
+    twitterDescription:
+      "Get in touch to discuss projects, collaborations, or opportunities in design and frontend engineering.",
+  },
 };
 
 /**

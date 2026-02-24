@@ -9,6 +9,8 @@ export function Footer() {
     { name: "Experience", path: "/experience" },
     { name: "About", path: "/about" },
     { name: "Works", path: "/works" },
+    { name: "Contact", path: "/contact" },
+    { name: "Blog", path: "/blog" },
   ];
 
   return (
@@ -29,7 +31,7 @@ export function Footer() {
               Quick Links
             </h4>
 
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-2">
               {navItems.map((item) => (
                 <li key={item.path}>
                   <Link

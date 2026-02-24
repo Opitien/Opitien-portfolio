@@ -9,8 +9,9 @@ export function Navbar() {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Experience", path: "/experience" },
-    { name: "About", path: "/about" },
     { name: "Works", path: "/works" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
