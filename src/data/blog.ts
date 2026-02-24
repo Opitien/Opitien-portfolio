@@ -19,8 +19,8 @@ export const blogPosts: BlogPost[] = [
       "In practice, this means isolating the \"retro\" layer into visuals: grain overlays, scanlines, chunky borders, and playful microcopy. Underneath, the layout still follows a sensible grid, typography scales cleanly across breakpoints, and the component API remains predictable.",
       "This portfolio is built with that philosophy: a modern React stack wrapped in a layer of intentional nostalgia.",
     ].join("\n\n"),
-    image: "https://opitien.dev/og-image.svg",
-    date: "2025-10-01",
+    image: "https://i.pinimg.com/1200x/cc/e7/38/cce7385fae5899e7016985d87b482c15.jpg",
+    date: "2026-02-25",
   },
   {
     slug: "building-delightful-frontend-experiences",
@@ -33,8 +33,8 @@ export const blogPosts: BlogPost[] = [
       "From a technical perspective, this often means leaning on composable primitives—utility components for buttons, cards, and overlays that can express multiple states without rewriting styles each time.",
       "The end result is a UI that feels expressive without sacrificing performance, readability, or accessibility.",
     ].join("\n\n"),
-    image: "https://opitien.dev/og-image.svg",
-    date: "2025-09-12",
+    image: "https://i.pinimg.com/736x/9d/75/b3/9d75b350dd0802836cb1b5a1fb7fdc1f.jpg",
+    date: "2026-02-25",
   },
   {
     slug: "shipping-portfolios-that-feel-like-products",
@@ -47,9 +47,23 @@ export const blogPosts: BlogPost[] = [
       "SEO is not an afterthought either. Each page and article gets dedicated meta tags, human-readable URLs, and predictable content structure so search engines and humans can both understand the site.",
       "This approach makes it much easier to extend the site with new pages, experiments, or case studies without rewriting the entire codebase.",
     ].join("\n\n"),
-    image: "https://opitien.dev/og-image.svg",
-    date: "2025-08-03",
+    image: "https://i.pinimg.com/1200x/d8/fa/79/d8fa791dbd9bbfe936ae8302f770dcc4.jpg",
+    date: "2026-02-25",
   },
+  {
+  slug: "designing-accessible-web-interfaces",
+  title: "Designing Accessible Web Interfaces",
+  excerpt:
+    "How I ensure every interface is usable, readable, and enjoyable for all users, regardless of ability.",
+  content: [
+    "Accessibility isn’t just a checklist—it’s a mindset. Every color choice, keyboard interaction, and semantic element contributes to a better experience for everyone.",
+    "I prioritize readable typography, sufficient color contrast, and predictable navigation patterns so that users with varying abilities can interact seamlessly with the UI.",
+    "Form validation, focus states, and ARIA attributes are baked into the design system, making accessibility a first-class concern rather than an afterthought.",
+    "By integrating accessibility from the start, the interfaces are not only compliant but also more usable, consistent, and delightful for all users.",
+  ].join("\n\n"),
+  image: "https://i.pinimg.com/1200x/bd/0b/bf/bd0bbf74f1f7f49b75fdda9a54b11c4b.jpg",
+  date: "2026-02-25",
+}
 ];
 
 export type Blog = (typeof blogPosts)[number];
