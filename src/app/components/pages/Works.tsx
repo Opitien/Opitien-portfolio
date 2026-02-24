@@ -40,37 +40,48 @@ export function Works() {
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                     className={`${project.featured ? "lg:col-span-2" : "lg:col-span-1"} group cursor-pointer`}
                 >
-                                        {/* Monitor Frame */}
-                                        <Link to={`/works/${project.slug}`} className="block">
-                                            <div className="relative bg-[#2C2C2C] p-3 rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2">
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-[#444] rounded-t-xl mx-4 mt-1"></div>
-                        
-                        {/* Screen */}
-                        <div className="relative aspect-video bg-black rounded-lg overflow-hidden border border-[#111]">
-                            {/* Scanlines */}
-                            <div className="absolute inset-0 z-20 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-40"></div>
+                    {/* Monitor Frame */}
+                    <Link to={`/works/${project.slug}`} className="block">
+                        <div className="relative bg-[#2C2C2C] p-3 rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2">
+                            <div className="absolute top-0 left-0 right-0 h-1 bg-[#444] rounded-t-xl mx-4 mt-1"></div>
                             
-                            {/* Image */}
-                            <ImageWithFallback
-                                src={project.image}
-                                alt={project.title}
-                                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 filter contrast-125 saturate-0 group-hover:saturate-100"
-                            />
+                            {/* Screen */}
+                            <div className="relative aspect-video bg-black rounded-lg overflow-hidden border border-[#111]">
+                                {/* Scanlines */}
+                                <div className="absolute inset-0 z-20 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-40"></div>
+                                
+                                {/* Video or Image */}
+                                {project.video ? (
+                                    <video
+                                        src={project.video}
+                                        muted
+                                        loop
+                                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                                        onMouseEnter={(e) => e.currentTarget.play()}
+                                        onMouseLeave={(e) => e.currentTarget.pause()}
+                                    />
+                                ) : (
+                                    <ImageWithFallback
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 filter contrast-125 saturate-0 group-hover:saturate-100"
+                                    />
+                                )}
 
-                            {/* Glare */}
-                            <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
+                                {/* Glare */}
+                                <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
+                            </div>
+
+                            {/* Monitor controls */}
+                            <div className="flex justify-between items-center px-4 py-2">
+                                <div className="flex gap-1">
+                                    <div className="w-1 h-1 bg-[#555] rounded-full"></div>
+                                    <div className="w-1 h-1 bg-[#555] rounded-full"></div>
+                                </div>
+                                <div className="w-8 h-1 bg-[#333] rounded-full"></div>
+                            </div>
                         </div>
-
-                                                {/* Monitor controls */}
-                                                <div className="flex justify-between items-center px-4 py-2">
-                             <div className="flex gap-1">
-                                <div className="w-1 h-1 bg-[#555] rounded-full"></div>
-                                <div className="w-1 h-1 bg-[#555] rounded-full"></div>
-                             </div>
-                             <div className="w-8 h-1 bg-[#333] rounded-full"></div>
-                                                </div>
-                                            </div>
-                                        </Link>
+                    </Link>
 
                     {/* Text Info */}
                     <div className="mt-8 flex justify-between items-start border-t border-[#2C2C2C]/10 pt-6">
@@ -89,7 +100,7 @@ export function Works() {
                             </p>
                         </div>
                         
-                            <div className="hidden md:flex flex-col items-end gap-2">
+                        <div className="hidden md:flex flex-col items-end gap-2">
                             {project.tags.map(tag => (
                                 <span key={tag} className="font-mono text-xs border border-[#2C2C2C]/20 px-2 py-1 rounded text-[#2C2C2C]/60">
                                     {tag}

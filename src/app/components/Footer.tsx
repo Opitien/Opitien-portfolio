@@ -1,7 +1,15 @@
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Link, useLocation } from "react-router";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "Experience", path: "/experience" },
+    { name: "About", path: "/about" },
+    { name: "Works", path: "/works" },
+  ];
 
   return (
     <footer className="border-t border-[#2C2C2C]/10 py-12 px-6 lg:px-12 bg-white/50">
@@ -20,27 +28,18 @@ export function Footer() {
             <h4 className="font-mono text-sm uppercase tracking-wider mb-4 text-[#2C2C2C]">
               Quick Links
             </h4>
+
             <ul className="space-y-2">
-              <li>
-                <a href="/" className="text-sm text-[#2C2C2C]/70 hover:text-[#5D9B99] transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/experience" className="text-sm text-[#2C2C2C]/70 hover:text-[#5D9B99] transition-colors">
-                  Experience
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="text-sm text-[#2C2C2C]/70 hover:text-[#5D9B99] transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="/works" className="text-sm text-[#2C2C2C]/70 hover:text-[#5D9B99] transition-colors">
-                  Works
-                </a>
-              </li>
+              {navItems.map((item) => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className="text-sm tracking-wider text-[#2C2C2C]/70 hover:text-[#5D9B99] transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

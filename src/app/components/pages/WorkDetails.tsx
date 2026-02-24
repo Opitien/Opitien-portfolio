@@ -69,7 +69,22 @@ export function WorkDetails() {
         >
           <div className="lg:col-span-7">
             <div className="relative border-2 border-[#2C2C2C] rounded-xl overflow-hidden">
-              <ImageWithFallback src={project.image} alt={project.title} className="w-full h-[480px] object-cover" />
+              {project.video ? (
+                <video
+                  src={project.video}
+                  muted
+                  loop
+                  className="w-full h-[480px] object-cover"
+                  onMouseEnter={(e) => e.currentTarget.play()}
+                  onMouseLeave={(e) => e.currentTarget.pause()}
+                />
+              ) : (
+                <ImageWithFallback
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-[480px] object-cover"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
           </div>

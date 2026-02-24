@@ -1,5 +1,5 @@
 const IMAGES = {
-  bravax: "https://images.unsplash.com/photo-1669216202494-1fe1d0205ea5?q=80&w=1080",
+  bravax: "",
   sight: "https://www.sightstudio.co/_next/image?url=%2Fimages%2Fabout.png&w=3840&q=75",
   energeon: "https://energeon.vercel.app/img/bg.png",
   furnilux: "https://furnilux-store.vercel.app/images/hero-living-room.jpg",
@@ -16,6 +16,7 @@ export const projects = [
       "Bravax is a next generation creative agency built to empower brands and creators to shape bold digital experiences. The agency was founded for modern businesses and visionaries seeking to connect design, storytelling, and technology into a cohesive brand presence.",
     tags: ["HTML/CSS 3", "JavaScript", "WordPress"],
     image: IMAGES.bravax,
+    video: "https://www.bravaxltd.com/assets/bravaxproduct.mp4", // Added video property
     featured: true,
     external: "https://www.bravaxltd.com/",
     repo: "https://github.com/pascal-tombere/Bravax",
