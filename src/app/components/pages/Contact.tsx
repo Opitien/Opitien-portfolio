@@ -78,7 +78,7 @@ export function Contact() {
           </div>
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#2C2C2C]/60">
             <Mail className="w-4 h-4 text-[#D17654]" />
-            <span>contact@opitien.dev</span>
+            <span>contact@opitien.work</span>
           </div>
         </header>
 
@@ -127,7 +127,7 @@ export function Contact() {
                           {...field}
                           type="email"
                           autoComplete="email"
-                          placeholder="you@example.com"
+                          placeholder="your@example.com"
                         />
                       </FormControl>
                       <FormMessage />

@@ -11,7 +11,7 @@ const skills = [
 
 const stats = [
   { label: "Level", value: "25" },
-  { label: "Class", value: "Technomancer" },
+  { label: "Class", value: "Developer" },
   { label: "EXP", value: "999999" },
   { label: "HP", value: "100/100" },
 ];

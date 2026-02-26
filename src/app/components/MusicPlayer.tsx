@@ -89,7 +89,7 @@ export function MusicPlayer() {
           x: isFolded ? 220 : 0, // slide out
         }}
         transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 18 }}
-        className="fixed bottom-6 right-0 z-40 hidden md:flex flex-col items-end gap-2"
+        className="fixed bottom-10 right-0 z-40 hidden md:flex flex-col items-end gap-2"
       >
         {/* ✅ EDGE TOGGLE TAB */}
         <button
@@ -104,7 +104,7 @@ export function MusicPlayer() {
 
         {/* Player Unit (UNCHANGED UI) */}
         <div className="bg-[#e8e6df] border border-[#b0b0b0] p-1 rounded-sm shadow-[4px_4px_0px_rgba(0,0,0,0.2)] w-64">
-          
+
           {/* Screen */}
           <div className="bg-[#2c2c2c] p-3 mb-3 border-4 border-[#d0d0d0] rounded-sm relative overflow-hidden">
             <div className="scanlines opacity-20"></div>
