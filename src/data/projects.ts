@@ -6,7 +6,7 @@ const IMAGES = {
   marion: "https://marion-store.vercel.app/images/asset_1.jpg",
   westbridge: "https://westbridge-university-portal.vercel.app/assets/hero-campus-DBQS9EPb.jpg",
   theironloaf:"https://images.unsplash.com/photo-1572125345941-a0687d65b989?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwYmFrZXJ5JTIwd29ya2VycyUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MXx8fHwxNzcyMDYzNjM1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  aidera: "https://aidera-frontend.vercel.app/images/aidera-frontend.jpeg",
+  aidera: "https://opitien.vercel.app/images/aidera-frontend.jpeg",
 };
 
 export const projects = [
