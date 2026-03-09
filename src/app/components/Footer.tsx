@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,7 +16,10 @@ export function Footer() {
   return (
     <footer className="border-t border-[#2C2C2C]/10 py-12 px-6 lg:px-12 bg-white/50">
       <div className="max-w-7xl mx-auto">
+
+        {/* Top Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-8">
+
           {/* Brand */}
           <div>
             <h3 className="retro-heading text-xl mb-4">OPITIEN.</h3>
@@ -50,28 +53,39 @@ export function Footer() {
             <h4 className="font-mono text-sm uppercase tracking-wider mb-4 text-[#2C2C2C]">
               Connect
             </h4>
+
             <div className="flex gap-3">
+
               <a
                 href="https://www.github.com/opitien/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-[#5D9B99] transition-colors"
                 aria-label="Github"
               >
                 <Github className="w-5 h-5" />
               </a>
+
               <a
                 href="https://www.linkedin.com/in/opitien/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-[#5D9B99] transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
+
               <a
                 href="https://x.com/opitienedison"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-[#5D9B99] transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </a>
+
               <a
                 href="mailto:opitiene@gmail.com"
                 className="w-10 h-10 bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-[#5D9B99] transition-colors"
@@ -79,19 +93,25 @@ export function Footer() {
               >
                 <Mail className="w-5 h-5" />
               </a>
+
             </div>
           </div>
+
         </div>
 
         {/* Bottom */}
         <div className="pt-8 border-t border-[#2C2C2C]/10 flex flex-col md:flex-row justify-between items-center gap-4">
+
           <p className="text-center font-mono text-xs text-[#2C2C2C]/60">
             © {currentYear} OPITIEN. Designed with retro vibes.
           </p>
+
           <p className="font-mono text-[10px] uppercase tracking-widest text-[#2C2C2C]/40 hover:text-[#D17654] transition-colors cursor-help">
             built with retro & late-night playlists
           </p>
+
         </div>
+
       </div>
     </footer>
   );

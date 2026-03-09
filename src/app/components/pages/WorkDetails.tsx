@@ -13,9 +13,9 @@ export function WorkDetails() {
   useSEO({
     title: project ? `${project.title} — Opitien Ejiroghene` : "Project — Opitien Ejiroghene",
     description: project ? project.description : "Project details",
-    ogImage: project ? project.image : undefined,
+    ogImage: project?.image,
     ogUrl: project ? `https://opitien.work/projects/${project.slug}` : undefined,
-    twitterImage: project ? project.image : undefined,
+    twitterImage: project?.image,
     canonicalUrl: project ? `https://opitien.work/projects/${project.slug}` : undefined,
   });
 
@@ -25,7 +25,7 @@ export function WorkDetails() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Project not found</h2>
           <p className="mb-6">The project you requested could not be located.</p>
-          <Link to="/works" className="retro-button inline-flex items-center gap-2">
+          <Link to="/works" className="retro-button inline-flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2">
             <ArrowLeft /> Back to Works
           </Link>
         </div>
@@ -38,23 +38,34 @@ export function WorkDetails() {
       <div className="max-w-6xl mx-auto space-y-12">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="retro-heading text-5xl lg:text-7xl text-[#2C2C2C] tracking-tighter">
-              {project.title}
-            </h1>
+            <h1 className="retro-heading text-5xl lg:text-7xl text-[#2C2C2C] tracking-tighter">{project.title}</h1>
             <p className="font-mono text-sm text-[#2C2C2C]/60 mt-2">{project.subtitle}</p>
           </div>
 
           <div className="flex items-center gap-3">
-            <Link to="/works" className="font-mono text-sm text-[#2C2C2C]/60 hover:text-[#5D9B99]">
+            <Link
+              to="/works"
+              className="font-mono text-sm text-[#2C2C2C]/60 hover:text-[#5D9B99] focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2"
+            >
               <ArrowLeft /> Back
             </Link>
             {project.repo && (
-              <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border rounded-md inline-flex items-center gap-2">
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="px-3 py-2 border rounded-md inline-flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2"
+              >
                 <Github /> Repo
               </a>
             )}
             {project.external && (
-              <a href={project.external} target="_blank" rel="noreferrer" className="px-3 py-2 border rounded-md inline-flex items-center gap-2">
+              <a
+                href={project.external}
+                target="_blank"
+                rel="noreferrer"
+                className="px-3 py-2 border rounded-md inline-flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2"
+              >
                 <ExternalLink /> Visit
               </a>
             )}
@@ -74,6 +85,8 @@ export function WorkDetails() {
                   src={project.video}
                   muted
                   loop
+                  playsInline
+                  preload="none"
                   className="w-full h-[480px] object-cover"
                   onMouseEnter={(e) => e.currentTarget.play()}
                   onMouseLeave={(e) => e.currentTarget.pause()}
@@ -82,6 +95,7 @@ export function WorkDetails() {
                 <ImageWithFallback
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
                   className="w-full h-[480px] object-cover"
                 />
               )}
@@ -98,10 +112,16 @@ export function WorkDetails() {
             <div className="bg-white border-2 border-[#2C2C2C] p-6 font-mono text-sm shadow-[4px_4px_0px_#2C2C2C]">
               <h3 className="uppercase tracking-widest border-b-2 border-[#2C2C2C] pb-2 mb-4">Tech</h3>
               <div className="flex gap-2 flex-wrap">
-                {project.tags.map((t) => (
-                  <span key={t} className="px-3 py-1 bg-[#2C2C2C] text-[#F5F3ED] font-mono text-xs uppercase tracking-wider">
+                {project.tags.map((t, idx) => (
+                  <motion.span
+                    key={t}
+                    initial={{ y: 5, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="px-3 py-1 bg-[#2C2C2C] text-[#F5F3ED] font-mono text-xs uppercase tracking-wider"
+                  >
                     {t}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
