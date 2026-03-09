@@ -4,6 +4,9 @@ const IMAGES = {
   energeon: "https://energeon.vercel.app/img/bg.png",
   furnilux: "https://furnilux-store.vercel.app/images/hero-living-room.jpg",
   marion: "https://marion-store.vercel.app/images/asset_1.jpg",
+  westbridge: "https://westbridge-university-portal.vercel.app/assets/hero-campus-DBQS9EPb.jpg",
+  theironloaf:"https://images.unsplash.com/photo-1572125345941-a0687d65b989?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwYmFrZXJ5JTIwd29ya2VycyUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MXx8fHwxNzcyMDYzNjM1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+  aidera: "https://aidera-frontend.vercel.app/images/aidera-frontend.jpeg",
 };
 
 export const projects = [
@@ -69,6 +72,42 @@ export const projects = [
     external: "https://marion-store.vercel.app/",
     repo: "https://github.com/opitien/marion",
   },
+{
+  id: 6,
+  title: "Westbridge",
+  slug: "westbridge",
+  subtitle: "Westbridge University Portal",
+  description: "Westbridge University Portal is a modern university management system designed to streamline academic operations. The platform provides role-based dashboards for students, lecturers, and administrators to manage course registration, academic records, assignments, results, notifications, and campus communication within a secure and scalable digital environment.",
+  tags: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase"],
+  image: IMAGES.westbridge,
+  featured: true,
+  external: "https://westbridge-university-portal.vercel.app/",
+  repo: "https://github.com/opitien/Westbridge-University-Portal",
+},
+{
+  id: 7,
+  title: "Iron Loaf",
+  slug: "iron-loaf",
+  subtitle: "The Iron Loaf",
+  description: "The Iron Loaf is a vintage-inspired industrial bakery website concept designed with a 1905 newspaper aesthetic. The project recreates the feel of early print media while delivering a modern responsive web experience. Built with React, Vite, and Tailwind CSS, the site showcases bakery products, production processes, and workers through a distinctive editorial-style layout.",
+  tags: ["React", "Vite", "Tailwind CSS", "TypeScript"],
+  image: IMAGES.theironloaf,
+  featured: false,
+  external: "https://the-iron-loaf.vercel.app/",
+  repo: "https://github.com/opitien/The-Iron-Loaf",
+},
+{
+  id: 8,
+  title: "Aidera",
+  slug: "aidera",
+  subtitle: "Aidera AI Health Assistant",
+  description: "Aidera is an AI-powered healthcare assistant designed to simplify access to medical information through an intuitive ChatGPT-style interface. The platform combines a modern landing page with an interactive chat experience, providing users with accessible health guidance in a clean, responsive environment.",
+  tags: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui", "HealthTech"],
+  image: IMAGES.aidera,
+  featured: false,
+  external: "https://aidera-frontend.vercel.app/",
+  repo: "https://github.com/opitien/Aidera-frontend",
+}
 ];
 
 export type Project = typeof projects[number];
