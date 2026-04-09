@@ -1,4 +1,4 @@
-import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Terminal } from "lucide-react";
 import { ImageWithFallback } from "../../components/figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { useSEO } from "../../../utils/useSEO";
@@ -9,123 +9,118 @@ import projects from "../../../data/projects";
 export function Works() {
   useSEO(getSEOConfig("works"));
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const projectVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
   return (
-    <div className="min-h-screen py-20 px-6 lg:px-12 bg-[#F5F3ED]">
-      <div className="max-w-7xl mx-auto space-y-20">
+    <div className="min-h-screen py-24 px-6 lg:px-24 bg-background">
+      <div className="max-w-7xl mx-auto space-y-24">
+        
         {/* Header */}
-        <div className="border-b-4 border-[#2C2C2C] pb-8 flex flex-col md:flex-row justify-between items-end gap-6">
-          <div>
-            <h1 className="retro-heading text-6xl md:text-8xl text-[#2C2C2C] tracking-tighter leading-none mb-2">
-              SELECTED<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5D9B99] to-[#2C2C2C]">
-                WORKS
-              </span>
-            </h1>
-            <p className="font-mono text-sm uppercase tracking-widest text-[#2C2C2C]/60 mt-4">
-              // A collection of digital artifacts
-            </p>
+        <div className="space-y-6">
+          <div className="flex items-center gap-3">
+            <span className="w-8 h-[1px] bg-brand-teal"></span>
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-teal">
+              Selected Projects
+            </span>
           </div>
-          <div className="flex gap-4">
-            <div className="w-4 h-4 bg-[#D17654] rounded-full animate-pulse"></div>
-            <div className="w-4 h-4 bg-[#5D9B99] rounded-full animate-pulse delay-75"></div>
-            <div className="w-4 h-4 bg-[#C5979D] rounded-full animate-pulse delay-150"></div>
-          </div>
+          
+          <h1 className="text-foreground leading-tight tracking-tighter">
+            Bringing ideas to life <br />
+            through <span className="text-brand-teal">code</span> & design.
+          </h1>
         </div>
 
-        {/* Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        {/* Projects Grid */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-20"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`${project.featured ? "lg:col-span-2" : "lg:col-span-1"} group cursor-pointer`}
+              variants={projectVariants}
+              className="group"
             >
-              {/* Monitor Frame */}
-              <Link to={`/works/${project.slug}`} className="block focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2">
-                <div className="relative bg-[#2C2C2C] p-3 rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-translate-y-2">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#444] rounded-t-xl mx-4 mt-1"></div>
-
-                  {/* Screen */}
-                  <div className="relative aspect-video bg-black rounded-lg overflow-hidden border border-[#111]">
-                    {/* Scanlines */}
-                    <div className="absolute inset-0 z-20 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-40"></div>
-
-                    {/* Video or Image */}
-                    {project.video ? (
-                      <video
-                        src={project.video}
-                        muted
-                        loop
-                        playsInline
-                        preload="none"
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                        onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => e.currentTarget.pause()}
-                      />
-                    ) : (
-                      <ImageWithFallback
-                        src={project.image}
-                        alt={project.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 filter contrast-125 saturate-0 group-hover:saturate-100"
-                      />
-                    )}
-
-                    {/* Glare */}
-                    <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
+              <Link to={`/works/${project.slug}`} className="block space-y-6">
+                {/* Image Container */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-muted border border-border">
+                  <ImageWithFallback
+                    src={project.image || "/images/placeholder.jpg"}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  
+                  {/* Overlay on Hover */}
+                  <div className="absolute inset-0 bg-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-background/90 backdrop-blur-md flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-500">
+                      <ArrowUpRight className="w-6 h-6 text-foreground" />
+                    </div>
                   </div>
 
-                  {/* Monitor controls */}
-                  <div className="flex justify-between items-center px-4 py-2">
-                    <div className="flex gap-1">
-                      <div className="w-1 h-1 bg-[#555] rounded-full"></div>
-                      <div className="w-1 h-1 bg-[#555] rounded-full"></div>
-                    </div>
-                    <div className="w-8 h-1 bg-[#333] rounded-full"></div>
+                  {/* Top Left Tag */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-background/80 backdrop-blur-md border border-border text-[10px] font-mono uppercase tracking-widest">
+                      {project.tags[0]}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Project Info */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-2xl font-bold tracking-tight group-hover:text-brand-teal transition-colors">
+                      {project.title}
+                    </h2>
+                    <span className="text-xs font-mono text-muted-foreground">0{index + 1}</span>
+                  </div>
+                  <p className="text-muted-foreground line-clamp-2 leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground border border-border px-2 py-0.5">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </Link>
-
-              {/* Text Info */}
-              <div className="mt-8 flex justify-between items-start border-t border-[#2C2C2C]/10 pt-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-[#D17654] font-mono text-xs uppercase tracking-wider">0{index + 1}</span>
-                    <h3 className="retro-heading text-3xl md:text-4xl text-[#2C2C2C] group-hover:text-[#5D9B99] transition-colors">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <p className="font-mono text-sm text-[#2C2C2C]/50 uppercase tracking-widest mb-4">{project.subtitle}</p>
-                  <p className="text-[#2C2C2C]/70 max-w-md leading-relaxed text-lg">{project.description}</p>
-                </div>
-
-                <div className="hidden md:flex flex-col items-end gap-2">
-                  {project.tags.map((tag, idx) => (
-                    <motion.span
-                      key={tag}
-                      initial={{ y: 5, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="font-mono text-xs border border-[#2C2C2C]/20 px-2 py-1 rounded text-[#2C2C2C]/60"
-                    >
-                      {tag}
-                    </motion.span>
-                  ))}
-                  <Link
-                    to={`/works/${project.slug}`}
-                    title="View Project Details"
-                    className="mt-4 w-10 h-10 border border-[#2C2C2C] rounded-full flex items-center justify-center hover:bg-[#2C2C2C] hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2"
-                  >
-                    <ArrowUpRight className="w-5 h-5" />
-                  </Link>
-                </div>
-              </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Professional CTA */}
+        <div className="pt-24 border-t border-border flex flex-col md:flex-row items-center justify-between gap-8">
+          <h3 className="text-3xl font-bold tracking-tighter">
+            Have a project in mind?
+          </h3>
+          <Link to="/contact">
+            <button className="px-12 py-5 bg-foreground text-background font-bold text-lg hover:bg-brand-teal transition-all hover:scale-105 active:scale-95">
+              Let's Collaborate
+            </button>
+          </Link>
         </div>
+
       </div>
     </div>
   );

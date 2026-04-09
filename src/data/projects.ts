@@ -1,5 +1,7 @@
 const IMAGES = {
   bravax: "",
+  bigdev: "https://www.thebigdev.co/thebigdev-socialimage.png",
+  atuzor:"https://www.atuzor.com/images/thumbnail.png",
   sight: "https://www.sightstudio.co/_next/image?url=%2Fimages%2Fabout.png&w=3840&q=75",
   energeon: "https://energeon.vercel.app/img/bg.png",
   furnilux: "https://furnilux-store.vercel.app/images/hero-living-room.jpg",
@@ -10,47 +12,60 @@ const IMAGES = {
 };
 
 export const projects = [
-{
+  {
   id: 1,
-  title: "Westbridge",
-  slug: "westbridge",
-  subtitle: "Westbridge University Portal",
-  description: "Westbridge University Portal is a modern university management system designed to streamline academic operations. The platform provides role-based dashboards for students, lecturers, and administrators to manage course registration, academic records, assignments, results, notifications, and campus communication within a secure and scalable digital environment.",
-  tags: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase"],
-  image: IMAGES.westbridge,
-  featured: true,
-  external: "https://westbridge-university-portal.vercel.app/",
-  repo: "https://github.com/opitien/Westbridge-University-Portal",
+  title: "The Big Dev",
+  slug: "the-big-dev",
+  subtitle: "The Big Dev Studio",
+  description: "The Big Dev is a digital execution brand based in Lagos, built for ambitious businesses ready to scale with intent.",
+  tags: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Vite"],
+  image: IMAGES.bigdev,
+  featured: false,
+  external: "https://thebigdev.co",
+  repo: "",
+},
+{
+  id: 2,
+  title: "Atuzor",
+  slug: "atuzor",
+  subtitle: "Atuzor",
+  description: "Atuzor is an all-in-one platform that helps you start, manage, and grow your business from a single dashboard from registration to compliance and daily operations.",
+  tags: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
+  image: IMAGES.atuzor,
+  featured: false,
+  external: "https://atuzor.com",
+  repo: "",
 },
 
 {
-  id: 2,
+  id: 3,
   title: "Aidera",
   slug: "aidera",
   subtitle: "Aidera AI Health Assistant",
   description: "Aidera is an AI-powered healthcare assistant designed to simplify access to medical information through an intuitive ChatGPT-style interface. The platform combines a modern landing page with an interactive chat experience, providing users with accessible health guidance in a clean, responsive environment.",
   tags: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui", "HealthTech"],
   image: IMAGES.aidera,
-  featured: true,
+  featured: false,
   external: "https://aidera-frontend.vercel.app/",
   repo: "https://github.com/opitien/Aidera-frontend",
 },
 
 {
-  id: 3,
-  title: "Sight Studio",
-  slug: "sight-studio",
-  subtitle: "Studio Portfolio",
-  description: "Sight Studio is a boutique design studio based in Warri, crafting brand identities for startups and global brands that are impossible to ignore. The studio bridges strategy and storytelling—helping small businesses connect with the right audience and grow through purpose-driven design.",
-  tags: ["Next.js","React","Bootstrap","Framer Motion","Typescript"],
-  image: IMAGES.sight,
+  id: 4,
+    title: "Westbridge",
+  slug: "westbridge",
+  subtitle: "Westbridge University Portal",
+  description: "Westbridge University Portal is a modern university management system designed to streamline academic operations. The platform provides role-based dashboards for students, lecturers, and administrators to manage course registration, academic records, assignments, results, notifications, and campus communication within a secure and scalable digital environment.",
+  tags: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase"],
+  image: IMAGES.westbridge,
   featured: false,
-  external: "https://sightstudio.co/",
-  repo: "https://github.com/southcircl/sightstudio",
+  external: "https://westbridge-university-portal.vercel.app/",
+  repo: "https://github.com/opitien/Westbridge-University-Portal",
 },
 
+
 {
-  id: 4,
+  id: 6,
   title: "FurniLux",
   slug: "furnilux",
   subtitle: "Furniture Store",
@@ -63,7 +78,7 @@ export const projects = [
 },
 
 {
-  id: 5,
+  id: 7,
   title: "Marion",
   slug: "marion",
   subtitle: "Marion Boutique",
@@ -76,7 +91,7 @@ export const projects = [
 },
 
 {
-  id: 6,
+  id: 8,
   title: "Iron Loaf",
   slug: "iron-loaf",
   subtitle: "The Iron Loaf",
@@ -89,7 +104,7 @@ export const projects = [
 },
 
 {
-  id: 7,
+  id: 8,
   title: "Energeon",
   slug: "energeon",
   subtitle: "Energy Products Landing Page",
@@ -102,7 +117,7 @@ export const projects = [
 },
 
 {
-  id: 8,
+  id: 10,
   title: "Bravax Technology Limited",
   slug: "bravax",
   subtitle: "Technology Company",
@@ -112,8 +127,20 @@ export const projects = [
   video: "https://www.bravaxltd.com/assets/bravaxproduct.mp4",
   featured: false,
   external: "https://www.bravaxltd.com/",
-  repo: "https://github.com/pascal-tombere/Bravax",
-}
+  repo: "",
+},
+{
+  id: 11,
+  title: "Sight Studio",
+  slug: "sight-studio",
+  subtitle: "Studio Portfolio",
+  description: "Sight Studio is a boutique design studio based in Warri, crafting brand identities for startups and global brands that are impossible to ignore. The studio bridges strategy and storytelling—helping small businesses connect with the right audience and grow through purpose-driven design.",
+  tags: ["Next.js","React","Bootstrap","Framer Motion","Typescript"],
+  image: IMAGES.sight,
+  featured: false,
+  external: "https://sightstudio.co/",
+  repo: "",
+},
 ];
 
 

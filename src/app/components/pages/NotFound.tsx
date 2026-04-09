@@ -12,7 +12,7 @@ export function NotFound() {
           </span>
         </h1>
         <p className="font-mono text-lg text-[#2C2C2C]/70">
-          The page you are looking for does not exist.
+          The page you are looking for does not exist yet.
         </p>
         <Link
           to="/"

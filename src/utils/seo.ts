@@ -19,8 +19,8 @@ export interface SEOConfig {
 }
 
 export const defaultSEO: SEOConfig = {
-  title: "Opitien Ejiroghene - Creative Developer & Designer",
-  description: "Portfolio of Opitien Ejiroghene, a creative developer and designer specializing in modern web experiences.",
+  title: "Opitien Ejiro - Creative Developer & Designer",
+  description: "Portfolio of Opitien Ejiro, a creative developer and designer specializing in modern web experiences.",
   keywords: [
     "developer",
     "designer",
@@ -31,21 +31,21 @@ export const defaultSEO: SEOConfig = {
     "TypeScript",
     "UI/UX",
   ],
-  ogTitle: "Opitien Ejiroghene - Creative Developer & Designer",
+  ogTitle: "Opitien Ejiro - Creative Developer & Designer",
   ogDescription:
-    "Portfolio of Opitien Ejiroghene, a creative developer and designer specializing in modern web experiences.",
+    "Portfolio of Opitien Ejiro, a creative developer and designer specializing in modern web experiences.",
   ogImage: "https://opitien.work/og-image.svg",
   ogUrl: "https://opitien.work/",
   twitterCard: "summary_large_image",
-  twitterTitle: "Opitien Ejiroghene - Creative Developer & Designer",
+  twitterTitle: "Opitien Ejiro - Creative Developer & Designer",
   twitterDescription:
-    "Portfolio of Opitien Ejiroghene, a creative developer and designer specializing in modern web experiences.",
+    "Portfolio of Opitien Ejiro, a creative developer and designer specializing in modern web experiences.",
   twitterImage: "https://opitien.work/og-image.svg",
 };
 
 export const pageSEO: Record<string, SEOConfig> = {
   home: {
-    title: "Opitien Ejiroghene - Creative Developer & Designer | Home",
+    title: "Opitien Ejiro - Creative Developer & Designer | Home",
     description:
       "Welcome to my portfolio. Discover my work, experience, and passion for creating exceptional digital experiences.",
     keywords: [
@@ -55,16 +55,16 @@ export const pageSEO: Record<string, SEOConfig> = {
       "web developer",
       "React developer",
     ],
-    ogTitle: "Opitien Ejiroghene - Creative Developer & Designer",
+    ogTitle: "Opitien Ejiro - Creative Developer & Designer",
     ogDescription:
       "Welcome to my portfolio. Discover my work, experience, and passion for creating exceptional digital experiences.",
     twitterCard: "summary_large_image",
-    twitterTitle: "Opitien Ejiroghene - Creative Developer & Designer",
+    twitterTitle: "Opitien Ejiro - Creative Developer & Designer",
     twitterDescription:
       "Welcome to my portfolio. Discover my work, experience, and passion for creating exceptional digital experiences.",
   },
   works: {
-    title: "My Works - Opitien Ejiroghene",
+    title: "My Works - Opitien Ejiro",
     description:
       "Explore my portfolio of projects showcasing my expertise in web development, design, and creative solutions.",
     keywords: [
@@ -75,16 +75,16 @@ export const pageSEO: Record<string, SEOConfig> = {
       "case studies",
       "creative work",
     ],
-    ogTitle: "My Works - Opitien Ejiroghene",
+    ogTitle: "My Works - Opitien Ejiro",
     ogDescription:
       "Explore my portfolio of projects showcasing my expertise in web development, design, and creative solutions.",
     twitterCard: "summary_large_image",
-    twitterTitle: "My Works - Opitien Ejiroghene",
+    twitterTitle: "My Works - Opitien Ejiro",
     twitterDescription:
       "Explore my portfolio of projects showcasing my expertise in web development, design, and creative solutions.",
   },
   experience: {
-    title: "Experience & Skills - Opitien Ejiroghene",
+    title: "Experience & Skills - Opitien Ejiro",
     description:
       "Learn about my professional experience, technical skills, and career journey as a creative developer.",
     keywords: [
@@ -95,16 +95,16 @@ export const pageSEO: Record<string, SEOConfig> = {
       "professional experience",
       "developer",
     ],
-    ogTitle: "Experience & Skills - Opitien Ejiroghene",
+    ogTitle: "Experience & Skills - Opitien Ejiro",
     ogDescription:
       "Learn about my professional experience, technical skills, and career journey as a creative developer.",
     twitterCard: "summary",
-    twitterTitle: "Experience & Skills - Opitien Ejiroghene",
+    twitterTitle: "Experience & Skills - Opitien Ejiro",
     twitterDescription:
       "Learn about my professional experience, technical skills, and career journey as a creative developer.",
   },
   about: {
-    title: "About Me - Opitien Ejiroghene",
+    title: "About Me - Opitien Ejiro",
     description:
       "Get to know me better. Discover my background, interests, and what drives my passion for creative development.",
     keywords: [
@@ -115,16 +115,16 @@ export const pageSEO: Record<string, SEOConfig> = {
       "personal",
       "creative developer",
     ],
-    ogTitle: "About Me - Opitien Ejiroghene",
+    ogTitle: "About Me - Opitien Ejiro",
     ogDescription:
       "Get to know me better. Discover my background, interests, and what drives my passion for creative development.",
     twitterCard: "summary",
-    twitterTitle: "About Me - Opitien Ejiroghene",
+    twitterTitle: "About Me - Opitien Ejiro",
     twitterDescription:
       "Get to know me better. Discover my background, interests, and what drives my passion for creative development.",
   },
   blog: {
-    title: "Blog - Opitien Ejiroghene",
+    title: "Blog - Opitien Ejiro",
     description:
       "Articles, field notes, and thoughts on frontend development, design, and retro-futuristic interfaces.",
     keywords: [
@@ -135,16 +135,16 @@ export const pageSEO: Record<string, SEOConfig> = {
       "interfaces",
       "development",
     ],
-    ogTitle: "Blog - Opitien Ejiroghene",
+    ogTitle: "Blog - Opitien Ejiro",
     ogDescription:
       "Articles, field notes, and thoughts on frontend development, design, and retro-futuristic interfaces.",
     twitterCard: "summary_large_image",
-    twitterTitle: "Blog - Opitien Ejiroghene",
+    twitterTitle: "Blog - Opitien Ejiro",
     twitterDescription:
       "Articles, field notes, and thoughts on frontend development, design, and retro-futuristic interfaces.",
   },
   contact: {
-    title: "Contact - Opitien Ejiroghene",
+    title: "Contact - Opitien Ejiro",
     description:
       "Get in touch to discuss projects, collaborations, or opportunities in design and frontend engineering.",
     keywords: [
@@ -155,11 +155,11 @@ export const pageSEO: Record<string, SEOConfig> = {
       "frontend developer",
       "designer",
     ],
-    ogTitle: "Contact - Opitien Ejiroghene",
+    ogTitle: "Contact - Opitien Ejiro",
     ogDescription:
       "Get in touch to discuss projects, collaborations, or opportunities in design and frontend engineering.",
     twitterCard: "summary",
-    twitterTitle: "Contact - Opitien Ejiroghene",
+    twitterTitle: "Contact - Opitien Ejiro",
     twitterDescription:
       "Get in touch to discuss projects, collaborations, or opportunities in design and frontend engineering.",
   },

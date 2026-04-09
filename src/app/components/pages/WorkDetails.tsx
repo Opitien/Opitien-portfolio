@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Globe, Code, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "../../components/figma/ImageWithFallback";
 import projects, { Project } from "../../../data/projects";
@@ -21,12 +21,14 @@ export function WorkDetails() {
 
   if (!project) {
     return (
-      <div className="min-h-screen py-20 px-6 lg:px-12 bg-[#F5F3ED]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Project not found</h2>
-          <p className="mb-6">The project you requested could not be located.</p>
-          <Link to="/works" className="retro-button inline-flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2">
-            <ArrowLeft /> Back to Works
+      <div className="min-h-screen py-24 px-6 lg:px-24 bg-background flex items-center justify-center">
+        <div className="max-w-md text-center space-y-8">
+          <h2 className="text-4xl font-bold tracking-tighter">Project not found</h2>
+          <p className="text-muted-foreground">The project you're looking for doesn't exist or has been moved.</p>
+          <Link to="/works">
+            <button className="px-8 py-4 bg-foreground text-background font-medium hover:bg-brand-teal transition-all">
+              Return to Works
+            </button>
           </Link>
         </div>
       </div>
@@ -34,99 +36,114 @@ export function WorkDetails() {
   }
 
   return (
-    <div className="min-h-screen py-20 px-6 lg:px-12 bg-[#F5F3ED]">
-      <div className="max-w-6xl mx-auto space-y-12">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="retro-heading text-5xl lg:text-7xl text-[#2C2C2C] tracking-tighter">{project.title}</h1>
-            <p className="font-mono text-sm text-[#2C2C2C]/60 mt-2">{project.subtitle}</p>
-          </div>
+    <div className="min-h-screen py-24 px-6 lg:px-24 bg-background">
+      <div className="max-w-7xl mx-auto space-y-16">
+        
+        {/* Navigation */}
+        <Link to="/works" className="inline-flex items-center gap-2 group text-muted-foreground hover:text-foreground transition-all">
+          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          <span className="font-mono text-xs uppercase tracking-widest font-medium">Back to Works</span>
+        </Link>
 
-          <div className="flex items-center gap-3">
-            <Link
-              to="/works"
-              className="font-mono text-sm text-[#2C2C2C]/60 hover:text-[#5D9B99] focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2"
-            >
-              <ArrowLeft /> Back
-            </Link>
+        {/* Hero Section */}
+        <div className="grid lg:grid-cols-12 gap-12 items-end">
+          <div className="lg:col-span-8 space-y-6">
+            <h1 className="text-foreground leading-none tracking-tighter">
+              {project.title}
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+              {project.description}
+            </p>
+          </div>
+          <div className="lg:col-span-4 flex justify-end gap-4">
             {project.repo && (
-              <a
-                href={project.repo}
-                target="_blank"
-                rel="noreferrer"
-                className="px-3 py-2 border rounded-md inline-flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2"
-              >
-                <Github /> Repo
+              <a href={project.repo} target="_blank" rel="noreferrer" className="w-12 h-12 border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+                <Github size={20} />
               </a>
             )}
             {project.external && (
-              <a
-                href={project.external}
-                target="_blank"
-                rel="noreferrer"
-                className="px-3 py-2 border rounded-md inline-flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-[#5D9B99] focus-visible:outline-offset-2"
-              >
-                <ExternalLink /> Visit
+              <a href={project.external} target="_blank" rel="noreferrer" className="px-8 h-12 bg-foreground text-background flex items-center justify-center gap-2 font-medium hover:bg-brand-teal transition-all">
+                Live Site <ExternalLink size={16} />
               </a>
             )}
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        {/* Visual Content */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="grid lg:grid-cols-12 gap-12 items-start"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative aspect-video bg-muted border border-border overflow-hidden"
         >
-          <div className="lg:col-span-7">
-            <div className="relative border-2 border-[#2C2C2C] rounded-xl overflow-hidden">
-              {project.video ? (
-                <video
-                  src={project.video}
-                  muted
-                  loop
-                  playsInline
-                  preload="none"
-                  className="w-full h-[480px] object-cover"
-                  onMouseEnter={(e) => e.currentTarget.play()}
-                  onMouseLeave={(e) => e.currentTarget.pause()}
-                />
-              ) : (
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  className="w-full h-[480px] object-cover"
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-            </div>
-          </div>
+          {project.video ? (
+            <video
+              src={project.video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <ImageWithFallback
+              src={project.image || "/images/placeholder.jpg"}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          )}
+        </motion.div>
 
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white border-2 border-[#2C2C2C] p-6 font-mono text-sm shadow-[4px_4px_0px_#2C2C2C]">
-              <h3 className="uppercase tracking-widest border-b-2 border-[#2C2C2C] pb-2 mb-4">Overview</h3>
-              <p className="text-[#2C2C2C]/80 leading-relaxed">{project.description}</p>
-            </div>
-
-            <div className="bg-white border-2 border-[#2C2C2C] p-6 font-mono text-sm shadow-[4px_4px_0px_#2C2C2C]">
-              <h3 className="uppercase tracking-widest border-b-2 border-[#2C2C2C] pb-2 mb-4">Tech</h3>
-              <div className="flex gap-2 flex-wrap">
-                {project.tags.map((t, idx) => (
-                  <motion.span
-                    key={t}
-                    initial={{ y: 5, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="px-3 py-1 bg-[#2C2C2C] text-[#F5F3ED] font-mono text-xs uppercase tracking-wider"
-                  >
-                    {t}
-                  </motion.span>
+        {/* Details Grid */}
+        <div className="grid lg:grid-cols-12 gap-16 pt-16 border-t border-border">
+          <div className="lg:col-span-4 space-y-8">
+            <div className="space-y-4">
+              <h3 className="font-mono text-[10px] uppercase tracking-widest text-brand-teal">Technology Stack</h3>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="px-3 py-1 bg-muted border border-border text-xs font-mono">
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>
           </div>
-        </motion.div>
+          
+          <div className="lg:col-span-8 space-y-12">
+            <div className="grid sm:grid-cols-2 gap-12">
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold">The Challenge</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Every project brings unique hurdles. For {project.title}, the focus was on creating 
+                  a seamless blend of performance and visual narrative, ensuring the user's journey 
+                  is as intuitive as it is aesthetically pleasing.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold">Strategy & Execution</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Leveraging modern tools like {project.tags[0]} and {project.tags[1]}, I developed 
+                  a robust architecture that supports both the creative vision and the technical 
+                  requirements of the project.
+                </p>
+              </div>
+            </div>
+
+            {/* Next Project CTA */}
+            <div className="p-12 bg-muted border border-border flex flex-col md:flex-row items-center justify-between gap-8">
+              <div>
+                <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2">Next Project</p>
+                <h4 className="text-2xl font-bold tracking-tight">Explore more of my work</h4>
+              </div>
+              <Link to="/works">
+                <button className="px-8 py-4 bg-foreground text-background font-medium hover:bg-brand-teal transition-all flex items-center gap-2">
+                  All Projects <ArrowUpRight size={16} />
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );

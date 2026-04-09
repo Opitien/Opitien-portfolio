@@ -4,19 +4,19 @@ import { getSEOConfig } from "../../../utils/seo";
 
 const experiences = [
   {
-    company: "Bravax Technology Limited",
-    role: "Senior Frontend Developer",
+    company: "The Big Dev Studio",
+    role: "Senior Developer & CTO",
     duration: "Jan 2026 — Present",
     description:
-      "I build and optimize full-stack web applications, delivering responsive, user-centered interfaces. I collaborate with designers and product teams, implement SEO and accessibility best practices, and manage version control, deployment, and testing to ensure reliable, scalable applications.",
+      "Leading technical strategy and full-stack development. Delivering high-performance web applications with a focus on scalability, SEO, and exceptional user experience. Managing the end-to-end lifecycle of digital products for ambitious brands.",
     tech: ["Node.js", "MongoDB", "Express", "React.js", "Next.js", "TypeScript", "Figma", "Framer"],
   },
   {
     company: "South Circle",
-    role: "Frontend Developer (Internship)",
+    role: "Frontend Developer",
     duration: "July 2025 — Present",
     description:
-      "During my internship as a Developer at South Circle, I built and optimized web applications using React.js, Next.js, TypeScript, and Node.js, improving performance and SEO. I collaborated with UX/UI designers in Figma to deliver user-centered experiences and managed version control, deployment, and testing to ensure reliable, scalable applications.",
+      "Optimizing frontend architectures for performance and engagement. Collaborating closely with design teams to translate complex Figma prototypes into seamless digital interfaces using modern React and Next.js patterns.",
     tech: ["Node.js", "MongoDB", "Express", "React.js", "Next.js", "TypeScript", "Figma"],
   },
   {
@@ -24,7 +24,7 @@ const experiences = [
     role: "Web Developer",
     duration: "Jan 2023 — June 2025",
     description:
-      "As a freelance designer, I built responsive websites in Wix CMS, translating brand concepts into engaging digital experiences. I created custom graphics, applied SEO and modern design principles, and improved user experience through intuitive layouts and clear navigation.",
+      "Built custom digital solutions for diverse clients. Focused on responsive design, brand storytelling, and developing accessible web experiences that drive business results.",
     tech: ["HTML/CSS", "JavaScript", "Wix CMS"],
   },
 ];
@@ -33,73 +33,68 @@ export function Experience() {
   useSEO(getSEOConfig("experience"));
 
   return (
-    <div className="min-h-screen py-20 px-6 lg:px-12 bg-[#F5F3ED] font-mono">
-      <div className="max-w-5xl mx-auto">
-
+    <div className="min-h-screen py-24 px-6 lg:px-24 bg-background">
+      <div className="max-w-4xl mx-auto space-y-24">
+        
         {/* Header */}
-        <div className="mb-12 border-b-2 border-[#2C2C2C] pb-4">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#2C2C2C] mb-2">
-            <span className="text-[#D17654] mr-4">&gt;</span>EXPERIENCE_LOG
+        <div className="space-y-6">
+          <div className="flex items-center gap-3">
+            <span className="w-8 h-[1px] bg-brand-teal"></span>
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-teal">
+              Career Path
+            </span>
+          </div>
+          
+          <h1 className="text-foreground leading-tight tracking-tighter">
+            Professional <br />
+            <span className="text-brand-teal">Journey</span> & Impact.
           </h1>
-          <p className="text-[#2C2C2C]/50 text-sm uppercase tracking-widest pl-12">
-            // System.loadHistory(user="OPITIEN_EJIRO")
-          </p>
         </div>
 
         {/* Timeline */}
-        <div className="relative border-l-2 border-[#2C2C2C]/20 ml-4 md:ml-12 space-y-16">
+        <div className="space-y-20 relative before:absolute before:left-0 before:top-0 before:h-full before:w-[1px] before:bg-border md:before:left-1/2">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="relative pl-8 md:pl-12"
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className={`relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-16 ${
+                index % 2 === 0 ? "md:text-right" : ""
+              }`}
             >
-              {/* Timeline node glow */}
-              <div className="absolute -left-[12px] top-2 w-8 h-8 rounded-full bg-[#D17654]/10 pointer-events-none"></div>
+              {/* Timeline Dot */}
+              <div className="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-brand-teal md:left-1/2 md:ml-[-5px]" />
 
-              {/* Timeline node */}
-              <motion.div
-                className="absolute -left-[9px] top-2 w-4 h-4 bg-[#F5F3ED] border-2 border-[#D17654] rounded-full cursor-default"
-                whileHover={{ scale: 1.3 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              />
-
-              {/* Experience Content */}
-              <div className="grid md:grid-cols-12 gap-4 items-start">
-                {/* Duration */}
-                <div className="md:col-span-3 text-sm text-[#2C2C2C]/50 pt-1">
-                  {exp.duration}
-                </div>
-
-                {/* Details */}
-                <div className="md:col-span-9">
-                  <h3 className="text-2xl font-bold text-[#2C2C2C] mb-1 hover:text-[#5D9B99] transition-colors cursor-default">
-                    {exp.company}
-                  </h3>
-
-                  <div className="text-[#5D9B99] text-sm uppercase tracking-wider mb-4 border-b border-[#2C2C2C]/10 pb-2 inline-block">
-                    {exp.role}
+              {/* Content Box */}
+              <div className={`${index % 2 === 0 ? "md:col-start-1" : "md:col-start-2"}`}>
+                <div className="space-y-4">
+                  <span className="font-mono text-xs text-brand-teal uppercase tracking-widest leading-none block">
+                    {exp.duration}
+                  </span>
+                  
+                  <div>
+                    <h3 className="text-2xl font-bold tracking-tight">
+                      {exp.company}
+                    </h3>
+                    <p className="text-muted-foreground font-medium italic">
+                      {exp.role}
+                    </p>
                   </div>
 
-                  <p className="text-[#2C2C2C]/80 leading-relaxed mb-4 max-w-2xl">
+                  <p className="text-muted-foreground leading-relaxed">
                     {exp.description}
                   </p>
 
-                  {/* Tech Stack */}
-                  <div className="flex gap-2 flex-wrap">
-                    {exp.tech.map((t, techIndex) => (
-                      <motion.span
+                  <div className={`flex flex-wrap gap-2 pt-2 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
+                    {exp.tech.map((t) => (
+                      <span
                         key={t}
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.2 + techIndex * 0.05 }}
-                        className="text-xs border border-[#2C2C2C]/20 px-2 py-1 text-[#2C2C2C]/60 hover:bg-[#2C2C2C] hover:text-white transition-colors cursor-default"
+                        className="text-[10px] font-mono uppercase tracking-wider text-foreground bg-muted border border-border px-2 py-0.5"
                       >
                         {t}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -107,6 +102,16 @@ export function Experience() {
             </motion.div>
           ))}
         </div>
+
+        {/* Professional Summary Footer */}
+        <div className="p-8 md:p-12 bg-muted border border-border space-y-6">
+          <h3 className="text-xl font-bold tracking-tight">Philosophy</h3>
+          <p className="text-muted-foreground leading-relaxed text-lg italic">
+            "I believe in building software that doesn't just work, but feels visceral and intentional. 
+            Bridge the gap between engineering rigor and creative expression."
+          </p>
+        </div>
+
       </div>
     </div>
   );

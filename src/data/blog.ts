@@ -9,8 +9,8 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "designing-retro-futuristic-interfaces",
-    title: "Designing Retro-Futuristic Interfaces",
+    slug: "how-to-use-a-website",
+    title: "How To Use A Website",
     excerpt:
       "How I blend CRT nostalgia, analog textures, and modern UX patterns into production-ready interfaces.",
     content: [
@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
       "This portfolio is built with that philosophy: a modern React stack wrapped in a layer of intentional nostalgia.",
     ].join("\n\n"),
     image: "https://i.pinimg.com/1200x/cc/e7/38/cce7385fae5899e7016985d87b482c15.jpg",
-    date: "2026-02-25",
+    date: "2026-04-01",
   },
   {
     slug: "building-delightful-frontend-experiences",

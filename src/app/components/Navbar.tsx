@@ -1,109 +1,110 @@
 import { Link, useLocation } from "react-router";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 export function Navbar() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Experience", path: "/experience" },
     { name: "Works", path: "/works" },
+    { name: "Experience", path: "/experience" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
 
-  /* Close menu on route change */
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location.pathname]);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  /* Prevent body scroll when menu open */
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
-  }, [isMenuOpen]);
+  useEffect(() => setIsMenuOpen(false), [location.pathname]);
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F5F3ED]/80 backdrop-blur-sm border-b border-[#2C2C2C]/10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-
-        <div className="flex items-center justify-between h-20">
-
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+      scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border py-4" : "bg-transparent py-6"
+    }`}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-24">
+        <div className="flex items-center justify-between">
+          
           {/* Logo */}
-          <Link to="/" className="retro-heading text-xl tracking-tight">
-            OPITIEN.
+          <Link to="/" className="group flex items-center gap-2">
+            <div className="w-8 h-8 bg-foreground flex items-center justify-center text-background font-bold text-lg group-hover:bg-brand-teal transition-colors">
+              O
+            </div>
+            <span className="font-bold tracking-tighter text-xl hidden sm:block">
+              OPITIEN<span className="text-brand-teal">.</span>
+            </span>
           </Link>
 
-          {/* Availability Badge */}
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-[#5D9B99]/10 border border-[#5D9B99]/20 rounded-full mx-4">
-            <div className="w-2 h-2 rounded-full bg-[#5D9B99] animate-pulse shadow-[0_0_8px_#5D9B99]" />
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#2C2C2C]/70">
-              Available for work
-            </span>
-          </div>
-
           {/* Desktop Menu */}
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-12">
             {navItems.map((item) => (
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`font-mono text-sm uppercase tracking-wider transition-colors ${
-                    isActive(item.path)
-                      ? "text-[#5D9B99]"
-                      : "text-[#2C2C2C] hover:text-[#D17654]"
+                  className={`text-sm font-medium tracking-tight transition-all relative group ${
+                    isActive(item.path) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {item.name}
+                  <span className={`absolute -bottom-1 left-0 h-[2px] bg-brand-teal transition-all duration-300 ${
+                    isActive(item.path) ? "w-full" : "w-0 group-hover:w-full"
+                  }`} />
                 </Link>
               </li>
             ))}
           </ul>
 
-          {/* Mobile Button */}
-          <button title="Toggle menu button"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            className="md:hidden w-10 h-10 flex items-center justify-center bg-[#2C2C2C] text-white"
-          >
-            {isMenuOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
-          </button>
+          {/* CTA / Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <Link to="/contact" className="hidden lg:block">
+              <button className="px-6 py-2 bg-foreground text-background text-sm font-medium hover:bg-brand-teal transition-colors">
+                Let's Talk
+              </button>
+            </Link>
+
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden w-10 h-10 flex items-center justify-center text-foreground"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
-        <div
-          id="mobile-menu"
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isMenuOpen ? "max-h-96 pb-6" : "max-h-0"
-          }`}
-        >
-          <ul className="space-y-4">
-            {navItems.map((item) => (
-              <li key={item.path}>
-                <Link
-                  to={item.path}
-                  className={`block font-mono text-sm uppercase tracking-wider transition-colors ${
-                    isActive(item.path)
-                      ? "text-[#5D9B99]"
-                      : "text-[#2C2C2C] hover:text-[#D17654]"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden overflow-hidden bg-background border-t border-border mt-4"
+            >
+              <ul className="py-8 space-y-6">
+                {navItems.map((item) => (
+                  <li key={item.path}>
+                    <Link
+                      to={item.path}
+                      className={`text-2xl font-bold tracking-tight ${
+                        isActive(item.path) ? "text-brand-teal" : "text-foreground"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

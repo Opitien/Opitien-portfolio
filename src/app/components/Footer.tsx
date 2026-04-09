@@ -23,8 +23,8 @@ export function Footer() {
           {/* Brand */}
           <div>
             <h3 className="retro-heading text-xl mb-4">OPITIEN.</h3>
-            <p className="text-sm text-[#2C2C2C]/70 leading-relaxed">
-              Crafting nostalgic digital experiences with modern technology.
+            <p className=" font-mono text-sm text-[#2C2C2C]/70 leading-relaxed">
+              Creative Developer & <br />Interface Designer
             </p>
           </div>
 
@@ -34,12 +34,12 @@ export function Footer() {
               Quick Links
             </h4>
 
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-2">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-2">
               {navItems.map((item) => (
                 <li key={item.path}>
                   <Link
                     to={item.path}
-                    className="text-sm tracking-wider text-[#2C2C2C]/70 hover:text-[#5D9B99] transition-colors"
+                    className="text-sm tracking-wider text-[#2C2C2C]/70 hover:text-[#5D9B99] transition-colors uppercase"
                   >
                     {item.name}
                   </Link>

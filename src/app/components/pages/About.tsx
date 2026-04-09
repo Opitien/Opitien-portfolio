@@ -1,254 +1,140 @@
-import { Coffee, Palette, Gamepad2, Terminal, Cpu } from "lucide-react";
+import { Code, Palette, Zap, Globe, Cpu, Heart } from "lucide-react";
 import { motion } from "motion/react";
 import { useSEO } from "../../../utils/useSEO";
 import { getSEOConfig } from "../../../utils/seo";
+import { Link } from "react-router";
 
 const skills = [
-  "React",
-  "TypeScript",
-  "JavaScript",
-  "Next.js",
-  "Tailwind CSS",
-  "Node.js",
-  "Supabase",
-  "HTML5",
-  "CSS3",
-  "Git",
-  "Figma",
-  "Framer Motion",
-  "UI/UX",
-  "WebGL"
-];
-
-const currentYear = new Date().getFullYear();
-const currentAge = currentYear - 2003;
-
-const stats = [
-  { label: "Age", value: currentAge },
-  { label: "Role", value: "Creative Developer" },
-  { label: "Projects", value: "25+" },
-  { label: "Status", value: "Active" },
+  "React", "TypeScript", "Next.js", "Tailwind CSS", 
+  "Node.js", "Supabase", "Git", "Figma", 
+  "Framer Motion", "Vite", "Product Strategy"
 ];
 
 export function About() {
   useSEO(getSEOConfig("about"));
 
   return (
-    <div className="min-h-screen py-20 px-6 lg:px-12 bg-[#F5F3ED]">
-      <div className="max-w-6xl mx-auto">
-
+    <div className="min-h-screen py-24 px-6 lg:px-24 bg-background">
+      <div className="max-w-5xl mx-auto space-y-24">
+        
         {/* Header */}
-        <div className="border-b-4 border-[#2C2C2C] pb-6 mb-16 flex items-end justify-between">
-
-          <div>
-            <h1 className="retro-heading text-5xl lg:text-7xl text-[#2C2C2C] tracking-tighter">
-              USER_PROFILE
-            </h1>
-
-            <div className="flex items-center gap-2 mt-2 text-[#5D9B99]">
-              <Terminal size={16} />
-              <span className="font-mono text-sm uppercase tracking-widest">
-                /usr/dev/opitien-ejiro
-              </span>
-            </div>
+        <div className="space-y-6">
+          <div className="flex items-center gap-3">
+            <span className="w-8 h-[1px] bg-brand-teal"></span>
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-teal">
+              The Story
+            </span>
           </div>
-
-          {/* Animated Activity Bars */}
-          <div className="flex gap-1 overflow-hidden">
-            {[1, 2, 3, 4, 5].map(i => (
-              <motion.div
-                key={i}
-                className={`w-4 h-8 ${i < 4 ? "bg-[#2C2C2C]" : "bg-[#2C2C2C]/20"}`}
-                animate={{ x: [-10, 10, -10] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.15
-                }}
-              />
-            ))}
-          </div>
-
+          
+          <h1 className="text-foreground leading-tight tracking-tighter">
+            Bridging the gap <br />
+            between <span className="text-brand-teal">design</span> & logic.
+          </h1>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Bio Content */}
+          <div className="lg:col-span-7 space-y-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="prose prose-lg dark:prose-invert"
+            >
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                I'm Opitien Ejiro, a <span className="text-foreground font-medium">Creative Developer</span> based in Lagos. 
+                With a background in both design and engineering, I specialize in building 
+                highly interactive, performant, and accessible digital products.
+              </p>
+              
+              <div className="h-[1px] w-12 bg-border my-8" />
 
-          {/* LEFT COLUMN */}
-          <motion.div
-            className="lg:col-span-4 space-y-8"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+              <p className="text-muted-foreground">
+                My approach is rooted in the belief that modern web experiences should be 
+                both functional and visceral. I don't just write code; I craft systems 
+                that prioritize human experience and narrative.
+              </p>
 
-            {/* Avatar */}
-            <div className="aspect-square bg-[#2C2C2C] p-2 relative group">
+              <p className="text-muted-foreground">
+                Whether it's a high-impact branding site for a creative studio or a 
+                complex SaaS dashboard, I bring the same level of obsession for detail, 
+                motion, and technical excellence.
+              </p>
+            </motion.div>
 
-              <div className="absolute inset-0 border-2 border-[#D17654] translate-x-2 translate-y-2 -z-10"></div>
-
-              <div className="w-full h-full bg-black overflow-hidden relative">
-
-                <img
-                  src="/images/profile.jpg"
-                  alt="Opitien Ejiro"
-                  className="w-full h-full object-cover grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-500"
-                />
-
-                {/* CRT Glow */}
-                <div className="absolute inset-0 bg-[#5D9B99]/10 mix-blend-overlay pointer-events-none"></div>
-
-                {/* Scanlines */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none"></div>
-
-                {/* Flicker */}
-                <div className="absolute inset-0 bg-white opacity-[0.02] animate-pulse pointer-events-none"></div>
-
+            {/* Core Values */}
+            <div className="grid sm:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div className="w-10 h-10 bg-muted flex items-center justify-center rounded-lg">
+                  <Zap className="w-5 h-5 text-brand-teal" />
+                </div>
+                <h3 className="text-lg font-bold">Performance First</h3>
+                <p className="text-sm text-muted-foreground">
+                  Optimization isn't an afterthought. I build with speed and efficiency as core requirements.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <div className="w-10 h-10 bg-muted flex items-center justify-center rounded-lg">
+                  <Palette className="w-5 h-5 text-brand-teal" />
+                </div>
+                <h3 className="text-lg font-bold">Design Sentient</h3>
+                <p className="text-sm text-muted-foreground">
+                  I speak the language of design, ensuring every pixel and transition is intentional.
+                </p>
               </div>
             </div>
+          </div>
 
-            {/* Stats */}
-            <div className="bg-white border-2 border-[#2C2C2C] p-6 font-mono text-sm shadow-[4px_4px_0px_#2C2C2C]">
-
-              <h3 className="uppercase tracking-widest border-b-2 border-[#2C2C2C] pb-2 mb-4">
-                Stats
-              </h3>
-
-              <div className="space-y-3">
-                {stats.map(stat => (
-                  <div key={stat.label} className="flex justify-between">
-                    <span className="text-[#2C2C2C]/60">{stat.label}</span>
-                    <span className="font-bold">{stat.value}</span>
-                  </div>
-                ))}
-              </div>
-
+          {/* Sidebar / Stats */}
+          <aside className="lg:col-span-5 space-y-12">
+            
+            {/* Image Box */}
+            <div className="relative aspect-square bg-muted overflow-hidden group">
+              <img
+                src="/images/profile.jpg"
+                alt="Opitien Ejiro"
+                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 border-[20px] border-background/50" />
             </div>
 
-          </motion.div>
-
-          {/* RIGHT COLUMN */}
-          <motion.div
-            className="lg:col-span-8 space-y-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-
-            {/* Bio */}
-            <section>
-              <h2 className="text-2xl font-bold uppercase tracking-widest mb-6 flex items-center gap-3">
-                <span className="w-3 h-3 bg-[#D17654]"></span>
-                Bio_Data
-              </h2>
-
-              <div className="font-mono space-y-6 text-[#2C2C2C]/80 leading-relaxed text-lg">
-
-                <p>
-                  System initialized in 2003. I’m a frontend developer focused on
-                  building fast, scalable, and visually distinctive web applications.
-                </p>
-
-                <p>
-                  My work lives primarily in the React and Next.js ecosystem where I
-                  combine modern engineering practices with strong UI and motion
-                  design principles.
-                </p>
-
-                <p>
-                  I enjoy crafting digital experiences that feel intentional,
-                  performant, and memorable while blending modern technology with
-                  subtle nostalgic aesthetics.
-                </p>
-
-              </div>
-            </section>
-
-            {/* Skills */}
-            <section>
-
-              <h2 className="text-2xl font-bold uppercase tracking-widest mb-6 flex items-center gap-3">
-                <span className="w-3 h-3 bg-[#5D9B99]"></span>
-                Equipped_Skills
-              </h2>
-
-              <div className="flex flex-wrap gap-3">
+            {/* Skills Card */}
+            <div className="p-8 bg-card border border-border space-y-6">
+              <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Tech Stack</h3>
+              <div className="flex flex-wrap gap-2">
                 {skills.map(skill => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 bg-[#2C2C2C] text-[#F5F3ED] font-mono text-xs uppercase tracking-wider hover:bg-[#D17654] transition-colors cursor-default"
-                  >
+                  <span key={skill} className="px-3 py-1 bg-background text-foreground border border-border text-xs font-mono">
                     {skill}
                   </span>
                 ))}
               </div>
+            </div>
 
-            </section>
+            {/* Availability Widget */}
+            <div className="p-8 bg-brand-teal/5 border border-brand-teal/20 flex items-center gap-4">
+              <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse" />
+              <p className="text-xs font-mono uppercase tracking-widest text-brand-teal">
+                Open for full-time & contract roles
+              </p>
+            </div>
 
-            {/* Perks */}
-            <section>
-
-              <h2 className="text-2xl font-bold uppercase tracking-widest mb-6 flex items-center gap-3">
-                <span className="w-3 h-3 bg-[#C5979D]"></span>
-                Perks
-              </h2>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-
-                <div className="border border-[#2C2C2C]/20 p-4 flex items-center gap-3">
-                  <Coffee className="text-[#D17654]" />
-                  <span className="font-mono text-sm">Caffeine_Boost</span>
-                </div>
-
-                <div className="border border-[#2C2C2C]/20 p-4 flex items-center gap-3">
-                  <Gamepad2 className="text-[#5D9B99]" />
-                  <span className="font-mono text-sm">Retro_Gamer</span>
-                </div>
-
-                <div className="border border-[#2C2C2C]/20 p-4 flex items-center gap-3">
-                  <Palette className="text-[#C5979D]" />
-                  <span className="font-mono text-sm">Pixel_Artist</span>
-                </div>
-
-                <div className="border border-[#2C2C2C]/20 p-4 flex items-center gap-3">
-                  <Cpu className="text-[#2C2C2C]" />
-                  <span className="font-mono text-sm">Hardware_Nut</span>
-                </div>
-
-              </div>
-
-            </section>
-
-            {/* CTA */}
-            <section className="border-t-2 border-[#2C2C2C] pt-10">
-
-              <h2 className="text-xl font-bold uppercase tracking-widest mb-6">
-                Next_Move
-              </h2>
-
-              <div className="flex flex-wrap gap-4">
-
-                <a
-                  href="/projects"
-                  className="px-6 py-3 bg-[#2C2C2C] text-[#F5F3ED] font-mono text-sm uppercase tracking-wider hover:bg-[#D17654] transition-colors"
-                >
-                  View_Projects →
-                </a>
-
-                <a
-                  href="/contact"
-                  className="px-6 py-3 border-2 border-[#2C2C2C] font-mono text-sm uppercase tracking-wider hover:bg-[#2C2C2C] hover:text-[#F5F3ED] transition-colors"
-                >
-                  Contact →
-                </a>
-
-              </div>
-
-            </section>
-
-          </motion.div>
-
+          </aside>
         </div>
+
+        {/* Closing Quote */}
+        <div className="py-24 border-t border-border text-center space-y-8">
+          <Heart className="w-8 h-8 text-brand-teal mx-auto" />
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter max-w-3xl mx-auto">
+            Let's build something <span className="text-brand-teal">remarkable</span> together.
+          </h2>
+          <Link to="/contact">
+            <button className="px-12 py-5 bg-foreground text-background font-bold text-lg hover:bg-brand-teal transition-all">
+              Initiate Conversation
+            </button>
+          </Link>
+        </div>
+
       </div>
     </div>
   );

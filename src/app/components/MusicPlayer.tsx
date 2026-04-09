@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Play, Pause, SkipForward, Volume2 } from "lucide-react";
-import { motion } from "motion/react";
+import { Play, Pause, SkipForward, Volume2, ChevronRight, ChevronLeft } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 /* PLAYLIST */
 const playlist = [
-  { title: "The Mountain Retro", src: "/audio/track1.mp3" },
-  { title: "Bransboynd Retro Lounge", src: "/audio/track2.mp3" },
-  { title: "Tunetank Synthwave Retro 80s music", src: "/audio/track3.mp3" },
+  { title: "The Mountain", src: "/audio/track1.mp3" },
+  { title: "Lounge Session", src: "/audio/track2.mp3" },
+  { title: "Synth Path", src: "/audio/track3.mp3" },
 ];
 
 export function MusicPlayer() {
@@ -14,7 +14,7 @@ export function MusicPlayer() {
   const [trackProgress, setTrackProgress] = useState(0);
   const [volume, setVolume] = useState(75);
   const [currentTrack, setCurrentTrack] = useState(0);
-  const [isFolded, setIsFolded] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -100,147 +100,85 @@ export function MusicPlayer() {
     <>
       <audio ref={audioRef} preload="metadata" />
 
-      {/* PLAYER */}
       <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        animate={{
-          y: 0,
-          opacity: 1,
-          x: isFolded ? 220 : 0,
-        }}
-        transition={{
-          delay: 0.5,
-          type: "spring",
-          stiffness: 120,
-          damping: 18,
-        }}
-        className="fixed bottom-10 right-0 z-40 hidden md:flex flex-col items-end gap-2"
+        initial={{ x: "calc(100% - 40px)" }}
+        animate={{ x: isOpen ? 0 : "calc(100% - 40px)" }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="fixed bottom-10 right-0 z-[60] flex items-center"
       >
-
-        {/* TOGGLE TAB */}
+        {/* Toggle Tab */}
         <button
-          onClick={() => setIsFolded(!isFolded)}
-          aria-label="Toggle music player"
-          className="absolute -left-6 top-1/2 -translate-y-1/2 w-6 h-16
-          bg-[#d0d0d0] border border-[#888]
-          flex items-center justify-center
-          hover:bg-white transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-10 h-24 bg-foreground text-background flex flex-col items-center justify-center gap-4 group"
+          aria-label="Toggle Player"
         >
-          {isFolded ? "◀" : "▶"}
+          <span className="font-mono text-[10px] uppercase tracking-widest [writing-mode:vertical-lr] font-bold group-hover:text-brand-teal transition-colors">
+            Audio
+          </span>
+          {isOpen ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
 
-        {/* PLAYER BODY */}
-        <div className="bg-[#e8e6df] border border-[#b0b0b0] p-1 rounded-sm shadow-[4px_4px_0px_rgba(0,0,0,0.2)] w-64">
-
-          {/* SCREEN */}
-          <div className="bg-[#2c2c2c] p-3 mb-3 border-4 border-[#d0d0d0] rounded-sm relative overflow-hidden">
-
-            <div className="scanlines opacity-20"></div>
-
-            <div className="flex items-center gap-3">
-
-              {/* VINYL */}
-              <div className="relative w-8 h-8 shrink-0">
-
-                <motion.div
-                  animate={{ rotate: isPlaying ? 360 : 0 }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="w-full h-full rounded-full bg-[#111] border border-[#333] flex items-center justify-center"
-                >
-                  <div className="w-3 h-3 bg-[#d17654] rounded-full border border-white/20"></div>
-                </motion.div>
-
+        {/* Player Body */}
+        <div className="bg-background border border-border border-r-0 p-6 w-72 shadow-2xl backdrop-blur-xl bg-background/90">
+          <div className="space-y-6">
+            
+            {/* Track Info */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-brand-teal font-bold">
+                  {isPlaying ? "Playing" : "Paused"}
+                </span>
+                <span className="font-mono text-[10px] text-muted-foreground uppercase">
+                  0{currentTrack + 1}/0{playlist.length}
+                </span>
               </div>
+              <h4 className="font-bold tracking-tight truncate">
+                {playlist[currentTrack].title}
+              </h4>
+              
+              {/* Simple Progress bar */}
+              <div className="h-[2px] w-full bg-border relative overflow-hidden">
+                <motion.div 
+                  className="absolute top-0 left-0 h-full bg-foreground"
+                  style={{ width: `${trackProgress}%` }}
+                />
+              </div>
+            </div>
 
-              {/* TEXT */}
-              <div className="overflow-hidden w-full">
+            {/* Controls */}
+            <div className="flex items-center justify-between gap-4">
+              <button
+                onClick={togglePlay}
+                className="w-12 h-12 bg-foreground text-background flex items-center justify-center rounded-full hover:bg-brand-teal transition-all"
+              >
+                {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" className="ml-1" />}
+              </button>
 
-                <div className="whitespace-nowrap font-mono text-[10px] text-[#5D9B99] uppercase tracking-wider">
-                  {isPlaying
-                    ? `Now Playing: ${playlist[currentTrack].title}`
-                    : "Ready to play"}
-                </div>
+              <button
+                onClick={nextTrack}
+                className="w-10 h-10 border border-border flex items-center justify-center rounded-full hover:border-foreground transition-all"
+              >
+                <SkipForward size={18} />
+              </button>
 
-                {/* PROGRESS */}
-                <div className="w-full bg-[#333] h-1 mt-1 rounded-full overflow-hidden">
-
-                  <motion.div
-                    className="h-full bg-[#d17654]"
-                    style={{ width: `${trackProgress}%` }}
+              <div className="flex items-center gap-2 flex-1">
+                <Volume2 size={14} className="text-muted-foreground" />
+                <div className="h-1 flex-1 bg-border relative rounded-full overflow-hidden">
+                  <div className="absolute top-0 left-0 h-full bg-foreground/30" style={{ width: `${volume}%` }} />
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={volume}
+                    onChange={(e) => setVolume(Number(e.target.value))}
+                    className="absolute inset-0 w-full opacity-0 cursor-pointer"
                   />
-
                 </div>
-
               </div>
             </div>
-          </div>
 
-          {/* CONTROLS */}
-          <div className="grid grid-cols-4 gap-2 px-1 pb-1">
-
-            {/* PLAY BUTTON */}
-            <button
-              onClick={togglePlay}
-              aria-label="Play or pause music"
-              className="h-8 bg-[#d0d0d0] border-b-2 border-[#888]
-              active:border-b-0 active:translate-y-[2px]
-              flex items-center justify-center text-[#2c2c2c]
-              hover:bg-white transition-colors"
-            >
-              {isPlaying ? (
-                <Pause size={12} fill="currentColor" />
-              ) : (
-                <Play size={12} fill="currentColor" />
-              )}
-            </button>
-
-            {/* NEXT BUTTON */}
-            <button
-              onClick={nextTrack}
-              aria-label="Next track"
-              className="h-8 bg-[#d0d0d0] border-b-2 border-[#888]
-              active:border-b-0 active:translate-y-[2px]
-              flex items-center justify-center text-[#2c2c2c]
-              hover:bg-white transition-colors"
-            >
-              <SkipForward size={12} fill="currentColor" />
-            </button>
-
-            {/* VOLUME */}
-            <div className="col-span-2 flex items-center gap-1 px-1">
-
-              <Volume2 size={10} className="text-[#555]" />
-
-              <div className="flex-1 h-1 bg-[#ccc] relative">
-
-                <div
-                  className="absolute top-0 left-0 h-full bg-[#5D9B99]"
-                  style={{ width: `${volume}%` }}
-                />
-
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={volume}
-                  onChange={(e) => setVolume(Number(e.target.value))}
-                  aria-label="Volume"
-                  className="absolute inset-0 w-full opacity-0 cursor-pointer"
-                />
-
-              </div>
-
-            </div>
           </div>
         </div>
-
-        {/* DECORATION */}
-        <div className="w-24 h-24 absolute -bottom-12 -right-12 border-4 border-[#2c2c2c]/10 rounded-full pointer-events-none"></div>
-
       </motion.div>
     </>
   );
