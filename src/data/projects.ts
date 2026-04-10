@@ -14,13 +14,13 @@ const IMAGES = {
 export const projects = [
   {
   id: 1,
-  title: "The Big Dev",
-  slug: "the-big-dev",
-  subtitle: "The Big Dev Studio",
-  description: "The Big Dev is a digital execution brand based in Lagos, built for ambitious businesses ready to scale with intent.",
+  title: "Big Dev",
+  slug: "big-dev",
+  subtitle: "Big Dev",
+  description: "Big Dev is a digital execution brand based in Lagos, built for ambitious businesses ready to scale with intent.",
   tags: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Vite"],
   image: IMAGES.bigdev,
-  featured: false,
+  featured: true,
   external: "https://thebigdev.co",
   repo: "",
 },
@@ -102,7 +102,7 @@ export const projects = [
   external: "https://the-iron-loaf.vercel.app/",
   repo: "https://github.com/opitien/The-Iron-Loaf",
 },
-
+/*
 {
   id: 8,
   title: "Energeon",
@@ -128,9 +128,9 @@ export const projects = [
   featured: false,
   external: "https://www.bravaxltd.com/",
   repo: "",
-},
+}, */
 {
-  id: 11,
+  id: 10,
   title: "Sight Studio",
   slug: "sight-studio",
   subtitle: "Studio Portfolio",
