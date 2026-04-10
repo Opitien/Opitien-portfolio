@@ -9,8 +9,8 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "how-to-use-a-website",
-    title: "How To Use A Website",
+    slug: "designing-retro-futuristic-interfaces",
+    title: "Designing Retro-Futuristic Interfaces",
     excerpt:
       "How I blend CRT nostalgia, analog textures, and modern UX patterns into production-ready interfaces.",
     content: [
@@ -63,7 +63,50 @@ export const blogPosts: BlogPost[] = [
   ].join("\n\n"),
   image: "https://i.pinimg.com/1200x/bd/0b/bf/bd0bbf74f1f7f49b75fdda9a54b11c4b.jpg",
   date: "2026-02-25",
+},
+{
+  slug: "websites-as-high-performance-instruments",
+  title: "Websites as High-Performance Instruments",
+  excerpt:
+    "Moving beyond pure aesthetics to build digital tools that prioritize utility, friction-less flow, and technical precision.",
+  content: [
+    "Too many websites are designed merely to be looked at—I prefer to build sites that are meant to be used. A website should function as a high-performance instrument: an interface that empowers the user to achieve their objective with zero wasted motion.",
+    "I approach digital ergonomics by stripping away the ornamental noise. Whether it's a documentation hub or a complex dashboard, the design must prioritize the 'user-as-operator'. This means every button, input, and transition is tuned for tactile feedback and cognitive ease.",
+    "In my workflow, this results in layouts that feel intentional rather than trendy. We prioritize predictable navigation, purposeful typography, and a hierarchy that respects the user's intent. The goal is an interface that disappears, leaving only the task at hand.",
+    "A tool-centric website is an asset that scales. It doesn't just look premium—it delivers measurable value by reducing friction and building deep technical trust with every interaction.",
+  ].join("\n\n"),
+  image: "https://images.unsplash.com/photo-1559028012-481c04fa702d",
+  date: "2026-04-10",
+},
+{
+  slug: "architecting-living-design-systems",
+  title: "Architecting Living Design Systems",
+  excerpt:
+    "How I build scalable foundations that balance rigid technical constraints with creative flexibility.",
+  content: [
+    "A design system is not a static library; it is the heartbeat of a product. Without a robust architectural foundation, digital products inevitably succumb to visual debt and technical fragmentation as they grow.",
+    "I focus on engineering systems that are both resilient and adaptable. This starts with a shared language of design tokens—atomic values for spacing, color, and rhythm—that serve as the single source of truth for both designers and engineers.",
+    "This methodology transforms the development process from a series of 'one-offs' into a cohesive manufacturing floor. By standardizing the primitive layer, we free up creative energy to solve complex problems rather than debating border-radii.",
+    "Ultimately, a living design system ensures that the product remains coherent even as it evolves. It provides a framework for multi-generational design, ensuring every new feature feels like a natural extension of the original vision.",
+  ].join("\n\n"),
+  image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e",
+  date: "2026-04-10",
+},
+{
+  slug: "how-to-use-a-modern-interface",
+  title: "A User's Guide to High-End Interfaces",
+  excerpt:
+    "How to navigate, interact with, and derive maximum value from modern, tool-centric web experiences.",
+  content: [
+    "Navigating a modern web application should feel less like reading a document and more like operating a precision instrument. As interfaces become more dynamic and reactive, understanding the language of interaction is key to a seamless experience.",
+    "The first step is identifying the feedback loops. Every hover, click, and scroll in a high-end interface is designed to provide 'ambient data'—subtle hints about where you are and what you can do next. Pay attention to the micro-interactions; they are the signposts of the digital space.",
+    "Command palettes, keyboard shortcuts, and gestural navigation are no longer just for 'power users'—they are the standard for efficient operation. I design these patterns to be discoverable yet unobtrusive, allowing you to move at the speed of thought.",
+    "Ultimately, using a website effectively is about rhythmic flow. Once you understand the underlying system—the design language and the technical logic—the interface becomes an extension of your intent, rather than a barrier to it.",
+  ].join("\n\n"),
+  image: "/images/blog/how-to-use-a-website.png",
+  date: "2026-04-10",
 }
+
 ];
 
 export type Blog = (typeof blogPosts)[number];
