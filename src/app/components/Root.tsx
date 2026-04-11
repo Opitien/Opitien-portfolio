@@ -12,11 +12,11 @@ export function Root() {
     <div className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden transition-colors duration-500">
       {/* Subtle Grain overlay for texture */}
       <div className="grain-overlay opacity-[0.03] pointer-events-none"></div>
-      
+
       <Navbar />
       <MusicPlayer />
-      
-      <main className="flex-1 relative z-10 pt-20">
+
+      <main className="flex-1 relative z-10 pt-20 pb-5">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -29,7 +29,7 @@ export function Root() {
           </motion.div>
         </AnimatePresence>
       </main>
-      
+
       <Footer />
     </div>
   );

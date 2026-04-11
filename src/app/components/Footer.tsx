@@ -1,46 +1,88 @@
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
-import { Link } from "react-router";
+import { Github, Linkedin, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Link, useLocation } from "react-router";
+import { motion } from "motion/react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const isContactPage = location.pathname === "/contact";
 
   const navItems = [
-    { name: "Home", path: "/" },
+    { name: "Works", path: "/works" },
     { name: "Experience", path: "/experience" },
     { name: "About", path: "/about" },
-    { name: "Works", path: "/works" },
-    { name: "Contact", path: "/contact" },
     { name: "Blog", path: "/blog" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const socialItems = [
+    { name: "GitHub", href: "https://www.github.com/opitien/", icon: <Github size={18} /> },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/opitien/", icon: <Linkedin size={18} /> },
+    { name: "WhatsApp", href: "https://wa.me/2347057261372", icon: <MessageCircle size={18} /> },
   ];
 
   return (
-    <footer className="border-t border-[#2C2C2C]/10 py-12 px-6 lg:px-12 bg-white/50">
-      <div className="max-w-7xl mx-auto">
+    <footer className="footer-container border-t border-border bg-card/30 pt-20 pb-12 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-teal/5 blur-[120px] pointer-events-none -z-10" />
 
-        {/* Top Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-24">
+        
+        {/* Large CTA Section - Hidden on Contact Page */}
+        {!isContactPage && (
+          <div className="mb-20">
+            <Link to="/contact" className="group block">
+              <h2 className="text-[12vw] lg:text-[100px] font-bold leading-none tracking-tighter uppercase transition-colors hover:text-brand-teal flex flex-wrap items-end gap-x-6">
+                Let's work <br className="md:hidden" /> together
+                <span className="inline-block translate-y-[-0.2em] transform group-hover:translate-x-4 group-hover:-translate-y-8 transition-transform duration-500 ease-out text-brand-teal">
+                  <ArrowUpRight strokeWidth={3} className="w-[8vw] h-[8vw] lg:w-20 lg:h-20" />
+                </span>
+              </h2>
+            </Link>
+          </div>
+        )}
 
-          {/* Brand */}
-          <div>
-            <h3 className="retro-heading text-xl mb-4">OPITIEN.</h3>
-            <p className=" font-mono text-sm text-[#2C2C2C]/70 leading-relaxed">
-              Creative Developer & <br />Interface Designer
+        <div className={`grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-12 ${!isContactPage ? "border-t border-border/40 pt-16" : ""}`}>
+          
+          {/* Brand & Mission */}
+          <div className="lg:col-span-5 space-y-6">
+            <Link to="/" className="group flex items-center gap-2">
+              <div className="w-8 h-8 bg-foreground flex items-center justify-center text-background font-bold text-lg group-hover:bg-brand-teal transition-colors">
+                O
+              </div>
+              <span className="font-bold tracking-tighter text-2xl">
+                OPITIEN<span className="text-brand-teal">.</span>
+              </span>
+            </Link>
+            <p className="text-muted-foreground max-w-sm leading-relaxed text-sm">
+              Creative technologist focusing on high-end digital experiences, 
+              interactive motion design, and scalable frontend architecture. 
+              Based in Delta, Nigeria.
             </p>
+            <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-muted-foreground mt-8">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-teal opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-teal"></span>
+                </span>
+                Available for hire
+              </div>
+              <span className="opacity-30">•</span>
+              <span>GMT +1</span>
+            </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-mono text-sm uppercase tracking-wider mb-4 text-[#2C2C2C]">
-              Quick Links
-            </h4>
-
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-2">
+          {/* Navigation Link Column */}
+          <div className="lg:col-span-3 space-y-6">
+            <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Navigation</h4>
+            <ul className="space-y-3">
               {navItems.map((item) => (
                 <li key={item.path}>
                   <Link
                     to={item.path}
-                    className="text-sm tracking-wider text-[#2C2C2C]/70 hover:text-[#5D9B99] transition-colors uppercase"
+                    className="text-sm font-medium hover:text-brand-teal transition-colors flex items-center group"
                   >
+                    <span className="w-0 group-hover:w-4 h-[1px] bg-brand-teal mr-0 group-hover:mr-2 transition-all duration-300 overflow-hidden" />
                     {item.name}
                   </Link>
                 </li>
@@ -48,68 +90,52 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Social */}
-          <div>
-            <h4 className="font-mono text-sm uppercase tracking-wider mb-4 text-[#2C2C2C]">
-              Connect
-            </h4>
-
-            <div className="flex gap-3">
-
-              <a
-                href="https://www.github.com/opitien/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-[#5D9B99] transition-colors"
-                aria-label="Github"
+          {/* Connect Column */}
+          <div className="lg:col-span-4 space-y-6">
+            <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Connect</h4>
+            <div className="flex flex-wrap gap-4">
+              {socialItems.map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-secondary/50 border border-border hover:border-brand-teal hover:bg-secondary transition-all group"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={social.name}
+                >
+                  <span className="group-hover:text-brand-teal transition-colors">
+                    {social.icon}
+                  </span>
+                </motion.a>
+              ))}
+            </div>
+            <div className="pt-4">
+              <p className="text-xs text-muted-foreground font-mono">Email me at:</p>
+              <a 
+                href="mailto:contact@opitien.work" 
+                className="text-sm font-medium hover:text-brand-teal transition-colors break-words"
               >
-                <Github className="w-5 h-5" />
+                contact@opitien.work
               </a>
-
-              <a
-                href="https://www.linkedin.com/in/opitien/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-[#5D9B99] transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-
-              <a
-                href="https://x.com/opitienedison"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-[#5D9B99] transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-
-              <a
-                href="mailto:opitiene@gmail.com"
-                className="w-10 h-10 bg-[#2C2C2C] text-white flex items-center justify-center hover:bg-[#5D9B99] transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-
             </div>
           </div>
 
         </div>
 
-        {/* Bottom */}
-        <div className="pt-8 border-t border-[#2C2C2C]/10 flex flex-col md:flex-row justify-between items-center gap-4">
-
-          <p className="text-center font-mono text-xs text-[#2C2C2C]/60">
-            © {currentYear} OPITIEN. Designed with retro vibes.
-          </p>
-
-          <p className="font-mono text-[10px] uppercase tracking-widest text-[#2C2C2C]/40 hover:text-[#D17654] transition-colors cursor-help">
-            built with retro & late-night playlists
-          </p>
-
+        {/* Footer Bottom */}
+        <div className="mt-20 pt-8 border-t border-border/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+          <p>© {currentYear} Opitien Ejiro. Built with precision and passion.</p>
+          <div className="flex items-center gap-8">
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="hover:text-foreground transition-all flex items-center gap-2 group"
+            >
+              Back to Top
+              <span className="group-hover:-translate-y-1 transition-transform inline-block">↑</span>
+            </button>
+          </div>
         </div>
 
       </div>
