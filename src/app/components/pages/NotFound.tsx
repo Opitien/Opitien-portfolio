@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export function NotFound() {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   // Mouse tracking for the large 404
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -30,15 +30,15 @@ export function NotFound() {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[15%] left-[10%] w-[500px] h-[500px] bg-brand-cyan/10 blur-[150px] rounded-full mix-blend-soft-light opacity-50" />
         <div className="absolute bottom-[10%] right-[5%] w-[600px] h-[600px] bg-brand-teal/5 blur-[180px] rounded-full mix-blend-soft-light opacity-30" />
-        
+
         {/* Fine Grain Overlay matching Root layout */}
-        <div className="absolute inset-0 opacity-[0.4] mix-blend-overlay" 
-             style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+        <div className="absolute inset-0 opacity-[0.4] mix-blend-overlay"
+          style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
       </div>
 
       {/* Extreme Background Text - matching Home.tsx style */}
       <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none select-none overflow-hidden">
-        <motion.div 
+        <motion.div
           style={{ x: tx, y: ty }}
           className="text-[40vw] font-black text-foreground/[0.03] tracking-tighter leading-none"
         >
@@ -46,7 +46,7 @@ export function NotFound() {
         </motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
@@ -54,7 +54,7 @@ export function NotFound() {
       >
         <div className="flex flex-col items-center gap-12 text-center">
           <div className="relative">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -67,14 +67,14 @@ export function NotFound() {
                 </span>
                 <span className="w-8 h-[1px] bg-brand-cyan"></span>
               </div>
-              
+
               <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.95] max-w-3xl mb-12">
                 LOST IN THE <br />
                 <span className="text-brand-teal italic">ARCHITECTURE.</span>
               </h2>
 
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto font-light leading-relaxed mb-16">
-                The content you requested has either moved to a new dimension 
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto font-light leading-relaxed mb-4">
+                The content you requested has either moved
                 or never existed in this project's scope.
               </p>
             </motion.div>
@@ -90,22 +90,14 @@ export function NotFound() {
               to="/"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              className="group relative flex items-center gap-4 px-10 py-5 bg-foreground text-background rounded-sm transition-all duration-500 hover:pr-14 active:scale-95 overflow-hidden"
+              className="group relative flex items-center gap-4 px-10 py-5 bg-foreground text-background rounded-sm transition-all duration-50 active:scale-95 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-3 font-medium tracking-wide first-letter:uppercase">
                 <Home className="w-4 h-4" />
-                Back to orbit
-                <MoveRight className="w-5 h-5 absolute -right-8 opacity-0 group-hover:right-[-4px] group-hover:opacity-100 transition-all duration-500" />
+                Back to Home
+                <MoveRight className="w-5 h-5 absolute -right-2 opacity-0 group-hover:right-[-20px] group-hover:opacity-100 transition-all duration-500" />
               </span>
               <div className="absolute inset-0 bg-brand-teal translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-            </Link>
-
-            <Link
-              to="/contact"
-              className="group flex items-center gap-3 text-foreground/60 hover:text-foreground font-medium transition-all"
-            >
-              <MessageCircle className="w-5 h-5 text-brand-cyan/60 group-hover:text-brand-cyan group-hover:rotate-12 transition-transform" />
-              <span className="border-b border-transparent group-hover:border-brand-cyan/30 pb-0.5">Report System Fragment</span>
             </Link>
           </motion.div>
         </div>
