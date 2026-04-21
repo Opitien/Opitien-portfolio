@@ -1,6 +1,6 @@
 const IMAGES = {
   bravax: "",
-  bigdev: "https://www.thebigdev.co/thebigdev-socialimage.png",
+  bigdev: "https://www.thebigdev.co/thumbnail.png.png",
   atuzor:"https://www.atuzor.com/images/thumbnail.png",
   sight: "https://www.sightstudio.co/_next/image?url=%2Fimages%2Fabout.png&w=3840&q=75",
   energeon: "https://energeon.vercel.app/img/bg.png",
